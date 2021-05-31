@@ -4,24 +4,19 @@ import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatProgressBarModule} from '@angular/material/progress-bar';
-
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './core/pages/home/home.component'
-import { HeaderComponent } from './core/components/header/header.component';
-import { FooterComponent } from './core/components/footer/footer.component';
+
+import { CoreModule } from "./core/core.module";
+import { MaterialModule } from "./material.module";
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent],
   imports: [
+    CoreModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatProgressBarModule,
     AppRoutingModule,
+    MaterialModule
   ],
   bootstrap: [AppComponent]
 })
