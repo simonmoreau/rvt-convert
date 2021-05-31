@@ -7,18 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isIframe = false;
-  loggedIn = false;
+  
   userName: any;
   loading: boolean;
 
   constructor() {
 
-  }
-
-  login() {
-
-  }
-
-  logout() {
   }
 }
