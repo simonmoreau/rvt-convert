@@ -1,6 +1,10 @@
 .toolbar-spacer {
     flex: 1 1 auto;
   }
+
+  .background-primary {
+    background-color:  var(--color-primary);
+  }
   
   a.title {
     color: white;
@@ -19,7 +23,7 @@
   .toolbar-main {
     flex: 1 1 100%;
     box-sizing: border-box;
-    max-width: 84%;
+    // max-width: 84%;
   }
 
   .toolbar-flexbox {

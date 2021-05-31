@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from "./core/core.module";
 import { MaterialModule } from "./material.module";
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -16,7 +18,8 @@ import { MaterialModule } from "./material.module";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   bootstrap: [AppComponent]
 })

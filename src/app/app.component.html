@@ -1,14 +1,17 @@
-<div fxLayout="column" fxFlexFill>
+<div fxLayout="column" class="container">
   <core-header></core-header>
-    <mat-progress-bar *ngIf="loading" color="accent" mode="indeterminate"></mat-progress-bar>
+  <div fxLayout="row" class="margin" fxFlex="1">
+    <div fxFlex="8"></div>
+    <div fxFlex="84">
+      <div fxLayout="column" fxFlexFill>
 
-    <div fxLayout="row" fxLayoutAlign="space-between" fxFlex>
-      <div fxFlex="8"></div>
-      <div fxFlex="84">
-        <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+        <mat-progress-bar *ngIf="loading" color="accent" mode="indeterminate"></mat-progress-bar>
+
         <router-outlet *ngIf="!isIframe"></router-outlet>
+
       </div>
-      <div fxFlex="8"></div>
     </div>
-    <core-footer></core-footer>
+    <div fxFlex="8"></div>
   </div>
+  <core-footer></core-footer>
+</div>

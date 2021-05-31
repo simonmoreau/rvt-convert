@@ -1,12 +1,14 @@
-<mat-toolbar color="primary" class="toolbar-flexbox">
-    <div class="toolbar-margin"></div>
+
+<div fxLayout="row" test>
+  <div fxFlex="8" class="background-primary"></div>
+  <div fxFlex="84">
     <mat-toolbar color="primary" class="toolbar-main">
 
       <a class="title" [routerLink]="['/']">
         <img src="assets/revit-to-ifc-logo-white.svg">
       </a>
       <div class="toolbar-spacer"></div>
-
+    
       <div class="button-spacer"></div>
       <button mat-flat-button [routerLink]="'/checkout'">Pricing</button>
       <div class="button-spacer"></div>
@@ -15,5 +17,6 @@
       <button mat-flat-button *ngIf="!loggedIn" (click)="login()">Login</button>
       <button mat-flat-button color="warn" *ngIf="loggedIn" (click)="logout()">Logout</button>
     </mat-toolbar>
-    <div class="toolbar-margin"></div>
-  </mat-toolbar>
+  </div>
+  <div fxFlex="8" class="background-primary"></div>
+</div>
