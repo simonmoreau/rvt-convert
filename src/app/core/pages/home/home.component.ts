@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
 import {
+  AccountInfo,
   AuthenticationResult,
   EventMessage,
   EventType,
@@ -14,11 +15,14 @@ import { filter } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   loginDisplay = false;
+  accountDisplayName = '';
+  accountId = '';
 
   constructor(
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.msalBroadcastService.msalSubject$
@@ -30,6 +34,7 @@ export class HomeComponent implements OnInit {
           console.log(result);
           const payload = result.payload as AuthenticationResult;
           this.authService.instance.setActiveAccount(payload.account);
+
         },
         error: (error) => console.log(error),
       });
@@ -39,5 +44,10 @@ export class HomeComponent implements OnInit {
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+    if (this.loginDisplay) {
+      const accountInfo: AccountInfo = this.authService.instance.getAllAccounts()[0];
+      this.accountDisplayName = accountInfo.name;
+      this.accountId = accountInfo.localAccountId;
+    }
   }
 }

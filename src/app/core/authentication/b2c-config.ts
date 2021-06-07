@@ -28,22 +28,20 @@ const isIE =
  * To learn more about user flows, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/user-flow-overview
  * To learn more about custom policies, visit: https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview
  */
-export const b2cPolicies = {
+ export const b2cPolicies = {
   names: {
-    signUpSignIn: 'B2C_1_sign_up_and_sign_in',
-    editProfile: 'B2C_1_edit_profile_v2',
+      signUpSignIn: "B2C_1_sign_up_and_sign_in",
+      editProfile: "B2C_1_edit_profile_v2"
   },
   authorities: {
-    signUpSignIn: {
-      authority:
-      'https://rvtconvert.b2clogin.com/rvtconvert.onmicrosoft.com/B2C_1_sign_up_and_sign_in',
-    },
-    editProfile: {
-      authority:
-        'https://rvtconvert.b2clogin.com/rvtconvert.onmicrosoft.com/B2C_1_edit_profile_v2',
-    },
+      signUpSignIn: {
+          authority: "https://rvtconvert.b2clogin.com/rvtconvert.onmicrosoft.com/B2C_1_sign_up_and_sign_in",
+      },
+      editProfile: {
+          authority: "https://rvtconvert.b2clogin.com/rvtconvert.onmicrosoft.com/B2C_1_edit_profile_v2"
+      }
   },
-  authorityDomain: 'rvtconvert.b2clogin.com',
+  authorityDomain: "rvtconvert.b2clogin.com"
 };
 
 /**

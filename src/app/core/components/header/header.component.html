@@ -15,8 +15,7 @@
       <button mat-flat-button  *ngIf="loginDisplay" [routerLink]="'/upload'">Convert</button>
       <div class="button-spacer"></div>
       <button mat-flat-button *ngIf="!loginDisplay" (click)="login()">Login</button>
-      <button mat-flat-button color="warn"  (click)="logout()">Logout</button> 
-      <!-- *ngIf="loginDisplay" -->
+      <button mat-flat-button color="warn" *ngIf="loginDisplay" (click)="logout()">Logout</button>
     </mat-toolbar>
   </div>
   <div fxFlex="8" class="background-primary"></div>
