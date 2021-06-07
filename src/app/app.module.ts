@@ -10,6 +10,7 @@ import { CoreModule } from "./core/core.module";
 import { MaterialModule } from "./material.module";
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MsalModule } from '@azure/msal-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MsalModule
   ],
   bootstrap: [AppComponent]
 })
