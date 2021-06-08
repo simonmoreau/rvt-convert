@@ -12,9 +12,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfiguration, MsalModule, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
 
 import { MSALInterceptorConfigFactory, MSALGuardConfigFactory, MSALInstanceFactory } from './authentication/b2c-config';
+import { LoginFailedComponent } from './pages/login-failed/login-failed.component';
 
 @NgModule({
-  declarations: [HomeComponent, HeaderComponent, FooterComponent],
+  declarations: [HomeComponent, HeaderComponent, FooterComponent, LoginFailedComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
