@@ -17,7 +17,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 export class HomeComponent implements OnInit, OnDestroy {
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
-  
+
   accountDisplayName = '';
   accountId = '';
 
