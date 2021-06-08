@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 
 
 const baseAPIURL = environment.apiUri + '/api/';
-const FUNCTION_ENDPOINT = baseAPIURL + 'TestFunction?name=test';
+const FUNCTION_ENDPOINT = baseAPIURL + 'TestTrigger?name=test';
 
 export interface MyInterface {
   name: string;
@@ -68,6 +68,12 @@ export class HomeComponent implements OnInit, OnDestroy {
           
       });
   }
+
+  callProfile () {
+    this.http.get('https://graph.microsoft.com/v1.0/me').subscribe( resp  => {
+      console.log(JSON.stringify(resp));
+    })
+  };
 
 
   setLoginDisplay() {

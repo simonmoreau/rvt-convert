@@ -18,3 +18,8 @@
     <p>Result from the API</p>
     <p>{{value}}</p>
 </div>
+
+
+<div *ngIf="loginDisplay">
+    <button *ngIf="loginDisplay" mat-flat-button color="warn" (click)="callProfile()">callProfile</button>
+</div>

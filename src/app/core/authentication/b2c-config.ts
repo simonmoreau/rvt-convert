@@ -88,7 +88,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
 
   const protectedResourceMap = new Map<string, Array<string> | null>([
     ['https://graph.microsoft.com/v1.0/me', ['user.read', 'profile']],
-    ['/api/', ['custom.scope']]
+    ['/api/', ['user.read']]
 ]);
 
   return {
