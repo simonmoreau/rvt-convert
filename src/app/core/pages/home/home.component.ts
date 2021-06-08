@@ -6,9 +6,18 @@ import {
   EventMessage,
   EventType,
 } from '@azure/msal-browser';
+import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
+
+const baseAPIURL = environment.apiUri + '/api/';
+const FUNCTION_ENDPOINT = baseAPIURL + 'TestFunction?name=test';
+
+export interface MyInterface {
+  name: string;
+}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,9 +30,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   accountDisplayName = '';
   accountId = '';
 
+  value: string;
+
   constructor(
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService
+    private msalBroadcastService: MsalBroadcastService,
+    private http: HttpClient
   ) {
   }
 
@@ -45,6 +57,18 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.setLoginDisplay();
   }
+
+  getValue() {
+    this.http.get<MyInterface>(FUNCTION_ENDPOINT).toPromise()
+      .then(value => {
+        if (value)
+        {
+          this.value = value.name;
+        }
+          
+      });
+  }
+
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
