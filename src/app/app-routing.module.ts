@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MsalGuard } from '@azure/msal-angular';
 
 import { HomeComponent } from './core/pages/home/home.component';
-import { PricingComponent } from './payment/pages/pricing/pricing.component'
+import { PricingComponent } from './payment/pages/pricing/pricing.component';
 import { ConversionComponent } from './conversion/pages/conversion/conversion.component';
 import { LoginFailedComponent } from './core/pages/login-failed/login-failed.component';
 

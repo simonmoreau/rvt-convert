@@ -49,7 +49,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
       .subscribe((result: EventMessage) => {
 
-        let payload: Payload = <AuthenticationResult>result.payload;
+        const payload: Payload = result.payload as AuthenticationResult;
 
         /**
          * For the purpose of setting an active account for UI update, we want to consider only the auth response resulting
@@ -78,7 +78,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const activeAccount = this.authService.instance.getActiveAccount();
 
     if (!activeAccount && this.authService.instance.getAllAccounts().length > 0) {
-      let accounts = this.authService.instance.getAllAccounts();
+      const accounts = this.authService.instance.getAllAccounts();
       this.authService.instance.setActiveAccount(accounts[0]);
     }
   }
@@ -108,7 +108,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout() {
     if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
       this.authService.logoutPopup({
-        mainWindowRedirectUri: "/"
+        mainWindowRedirectUri: '/'
       });
     } else {
       this.authService.logoutRedirect();
@@ -116,8 +116,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   editProfile() {
-    let editProfileFlowRequest = {
-      scopes: ["openid"],
+    const editProfileFlowRequest = {
+      scopes: ['openid'],
       authority: b2cPolicies.authorities.editProfile.authority,
     };
 

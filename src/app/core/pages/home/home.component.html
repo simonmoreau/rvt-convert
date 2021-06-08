@@ -10,3 +10,11 @@
     <p>{{accountDisplayName}}</p>
     <p>{{accountId}}</p>
 </div>
+
+
+
+<div *ngIf="loginDisplay">
+    <button *ngIf="loginDisplay" mat-flat-button color="warn" (click)="getValue()">getValue</button>
+    <p>Result from the API</p>
+    <p>{{value}}</p>
+</div>

@@ -20,7 +20,8 @@ import { LoginFailedComponent } from './pages/login-failed/login-failed.componen
     CommonModule,
     AppRoutingModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   exports:[ HomeComponent, HeaderComponent, FooterComponent],
   providers: [
