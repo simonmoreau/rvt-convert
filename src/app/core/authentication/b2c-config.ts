@@ -88,11 +88,11 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
 
   const protectedResourceMap = new Map<string, Array<string> | null>([
     ['https://graph.microsoft.com/v1.0/me', ['user.read', 'profile']],
-    ['/api/', ['user.read']]
+    ['/api/', ['https://rvtconvert.onmicrosoft.com/beea9d5c-29bb-49b7-b7b9-f647b90a74d8/user.read']]
 ]);
 
   return {
-    interactionType: InteractionType.Redirect,
+    interactionType: InteractionType.Popup,
     protectedResourceMap,
   };
 }

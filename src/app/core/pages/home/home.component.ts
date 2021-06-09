@@ -83,8 +83,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     {
       const activeAccount: AccountInfo = this.authService.instance.getActiveAccount();
 
-      this.accountDisplayName = activeAccount.name;
-      this.accountId = activeAccount.localAccountId;
+      if (activeAccount != null)
+      {
+        this.accountDisplayName = activeAccount.name;
+        this.accountId = activeAccount.localAccountId;
+      }
+
     }
 
 

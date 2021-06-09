@@ -7,6 +7,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace RvtConvert
 {
@@ -21,6 +22,7 @@ namespace RvtConvert
 
       string name = req.Query["name"];
 
+      ClaimsPrincipal identities = req.HttpContext.User;
 
       string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
       dynamic data = JsonConvert.DeserializeObject(requestBody);
