@@ -12,6 +12,8 @@ import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MsalModule, MsalRedirectComponent } from '@azure/msal-angular';
 
+import { ConversionModule } from './conversion/conversion.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -21,7 +23,8 @@ import { MsalModule, MsalRedirectComponent } from '@azure/msal-angular';
     AppRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    MsalModule
+    MsalModule,
+    ConversionModule
   ],
   bootstrap: [AppComponent, MsalRedirectComponent]
 })
