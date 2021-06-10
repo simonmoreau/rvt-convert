@@ -1,5 +1,5 @@
-<mat-card-content class="container">
-    <div class="box-left">
+<mat-card-content fxLayout="row" fxLayoutAlign="space-between">
+    <div>
         <mat-card-content>
             <div class="mat-title overflow">{{ item?.file?.name }}</div>
             <div class="mat-body">
@@ -7,9 +7,9 @@
                 <span *ngIf="item?.fileLikeObject?.version">{{' - Revit ' + item?.fileLikeObject?.version}}</span>
             </div>
         </mat-card-content>
-        <mat-card-content class="file-detail mat-body">
+        <mat-card-content>
             <div>
-                <div class="horizontal" [ngClass]="{'isError': item?.isError}" fxLayout="row" fxLayoutAlign="start center">
+                <div [ngClass]="{'isError': item?.isError}" fxLayout="row" fxLayoutAlign="start center">
                     <mat-progress-spinner *ngIf="item?.isUploading || item?.isConverting" diameter="20" mode="indeterminate"></mat-progress-spinner>
                     <span class="horizontal" *ngIf="item?.progress">{{ item?.progress}} % </span>
                     <span *ngIf="item?.isError" class="material-icons">error</span>
@@ -18,8 +18,8 @@
             </div>
         </mat-card-content>
     </div>
-    <div class="box-right">
-        <div class="button-container">
+    <div>
+        <div>
             <button mat-icon-button color="primary" (click)="item.upload()"
                 [disabled]="item.isReady || item.isConverting || item.isSuccess || item.isError" aria-label="Upload"
                 matTooltip="Upload">

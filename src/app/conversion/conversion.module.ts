@@ -6,6 +6,7 @@ import { FileSelectDirective } from './directives/file-select.directive';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { MaterialModule } from '../material.module';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -19,7 +20,8 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   exports:[
     UploaderComponent

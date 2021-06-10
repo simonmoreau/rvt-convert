@@ -1,45 +1,46 @@
 <p>uploader works!</p>
 <mat-card>
-    <mat-card-content *ngIf="uploader?.queue?.length == 0" class="mat-display-2">
-        <input type="file" name="file" appFileSelect [uploader]="uploader" multiple id="file" accept=".rvt,.rfa" 
+    <mat-card-content fxLayout="row">
+        <div fxFlex="4"></div>
+        <div *ngIf="uploader?.queue?.length == 0" class="mat-display-2" fxFlex="92">
+            <input type="file" name="file" appFileSelect [uploader]="uploader" multiple id="file" accept=".rvt,.rfa" 
             class="inputfile" />
         <label for="file">
             <span class="material-icons">add_circle</span>
             Upload your Revit files
         </label>
-    </mat-card-content>
-    <mat-card-content *ngIf="uploader?.queue?.length > 0">
-        <div class="row">
+        </div>
+        <div *ngIf="uploader?.queue?.length > 0" fxFlex="92">
             <div class="mat-body">
                 {{uploader?.queue?.length}} Revit files added
             </div>
-            <mat-card *ngFor="let item of uploader.queue" class="upload-item">
+            <mat-card *ngFor="let item of uploader.queue" class="file-uploader">
                 <app-file-uploader [item]="item"></app-file-uploader>
             </mat-card>
-    
+            <div class="file-uploader">
+                <button mat-button color="primary">
+                    <input type="file" name="file" appFileSelect [uploader]="uploader" multiple id="file" accept=".rvt"
+                        class="inputfile" />
+                    <label for="file" class="mat-button-wrapper">
+                        <span class="material-icons">add_circle</span>
+                        Add files
+                    </label>
+                </button>
+                <button mat-button color="primary" (click)="uploader.uploadAll()"
+                    [disabled]="!uploader.getNotUploadedItems().length">
+                    <span class="material-icons">cloud_upload</span>
+                    Upload all
+                </button>
+                <button mat-button color="primary" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                    <span class="material-icons">delete</span>
+                    Remove all
+                </button>
+            </div>
         </div>
+        <div fxFlex="4"></div>
     </mat-card-content>
 </mat-card>
 
 
 
 
-<div>
-    <button mat-button color="primary">
-        <input type="file" name="file" appFileSelect [uploader]="uploader" multiple id="file" accept=".rvt"
-            class="inputfile" />
-        <label for="file" class="mat-button-wrapper">
-            <span class="material-icons">add_circle</span>
-            Add files
-        </label>
-    </button>
-    <button mat-button color="primary" (click)="uploader.uploadAll()"
-        [disabled]="!uploader.getNotUploadedItems().length">
-        <span class="material-icons">cloud_upload</span>
-        Upload all
-    </button>
-    <button mat-button color="primary" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-        <span class="material-icons">delete</span>
-        Remove all
-    </button>
-</div>
