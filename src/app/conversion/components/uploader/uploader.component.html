@@ -1,12 +1,28 @@
 <p>uploader works!</p>
-<mat-card-content *ngIf="uploader?.queue?.length == 0" class="mat-display-2">
-    <input type="file" name="file" appFileSelect [uploader]="uploader" multiple id="file" accept=".rvt,.rfa" 
-        class="inputfile" />
-    <label for="file">
-        <span class="material-icons">add_circle</span>
-        Upload your Revit files
-    </label>
-</mat-card-content>
+<mat-card>
+    <mat-card-content *ngIf="uploader?.queue?.length == 0" class="mat-display-2">
+        <input type="file" name="file" appFileSelect [uploader]="uploader" multiple id="file" accept=".rvt,.rfa" 
+            class="inputfile" />
+        <label for="file">
+            <span class="material-icons">add_circle</span>
+            Upload your Revit files
+        </label>
+    </mat-card-content>
+    <mat-card-content *ngIf="uploader?.queue?.length > 0">
+        <div class="row">
+            <div class="mat-body">
+                {{uploader?.queue?.length}} Revit files added
+            </div>
+            <mat-card *ngFor="let item of uploader.queue" class="upload-item">
+                <app-file-uploader [item]="item"></app-file-uploader>
+            </mat-card>
+    
+        </div>
+    </mat-card-content>
+</mat-card>
+
+
+
 
 <div>
     <button mat-button color="primary">

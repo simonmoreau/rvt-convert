@@ -5,6 +5,7 @@ import { FileDropDirective } from './directives/file-drop.directive';
 import { FileSelectDirective } from './directives/file-select.directive';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { MaterialModule } from '../material.module';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 
 
@@ -13,7 +14,8 @@ import { MaterialModule } from '../material.module';
     ConversionComponent,
     FileDropDirective,
     FileSelectDirective,
-    UploaderComponent
+    UploaderComponent,
+    FileUploaderComponent
   ],
   imports: [
     CommonModule,

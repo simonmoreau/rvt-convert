@@ -13,10 +13,13 @@ export class FileItem {
   public isReady: boolean = false;
   public isUploading: boolean = false;
   public isUploaded: boolean = false;
+  public isConverting: boolean = false;
+  public isConverted: boolean = false;
   public isSuccess: boolean = false;
   public isCancel: boolean = false;
   public isError: boolean = false;
   public progress: number = 0;
+  public message: string = '';
   public index: number = void 0;
   public _xhr: XMLHttpRequest;
   public _form: any;
