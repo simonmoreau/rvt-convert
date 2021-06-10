@@ -4,8 +4,8 @@
             <div class="mat-title overflow">{{ item?.file?.name }}</div>
             <div class="mat-body">
                 <span>{{ item?.fileLikeObject?.size / 1024 / 1024 | number: '.2' }} MB</span>
-                <span *ngIf="item?.fileLikeObject?.version">{{' - Revit ' + item?.fileLikeObject?.version}}</span>
-            </div>
+                <span *ngIf="item?.fileLikeObject?.$version | async"> - Revit {{ item?.fileLikeObject?.$version | async }}</span>
+            </div> 
         </mat-card-content>
         <mat-card-content>
             <div>
