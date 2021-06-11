@@ -34,11 +34,36 @@ export class FileItem {
     this.options = options;
     this.fileLikeObject = new FileLikeObject(some);
     this.file = some;
+
+    if (this.fileLikeObject.extension != 'rfa' && this.fileLikeObject.extension != 'rvt')
+    {
+      this.isError = true;
+      this.message = 'Please upload a Revit file (*.rvt or *.rfa).';
+    }
+    else if (this.fileLikeObject.name.includes('[') || this.fileLikeObject.name.includes(']'))
+    {
+      this.isError = true;
+      this.message = 'You can use "[" or "]" in your filename.';
+    }
+    else
+    {
+      this.message = 'Looking for the Revit version'
+      this.fileLikeObject.$version.subscribe(
+        result => this.isReady = true,
+        error => {
+            this.isError = true;
+            this.message = error;
+          }
+        );
+    }
+
     if (uploader.options) {
       this.method = uploader.options.method || 'POST';
       this.alias = uploader.options.itemAlias || 'file';
     }
     this.url = uploader.options.url;
+    
+
   }
 
   public upload(): void {

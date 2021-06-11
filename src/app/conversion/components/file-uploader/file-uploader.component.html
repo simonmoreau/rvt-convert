@@ -2,10 +2,9 @@
     <div>
         <mat-card-content>
             <div class="mat-title overflow">{{ item?.file?.name }}</div>
-            <div class="mat-body">
-                <span>{{ item?.fileLikeObject?.size / 1024 / 1024 | number: '.2' }} MB</span>
-                <span *ngIf="item?.fileLikeObject?.$version | async"> - Revit {{ item?.fileLikeObject?.$version | async }}</span>
-            </div> 
+            <div class="mat-body" fxLayout="row" fxLayoutAlign="start center">
+                <span>{{ item?.fileLikeObject?.size / 1024 / 1024 | number: '.2' }} MB </span>
+            </div>
         </mat-card-content>
         <mat-card-content>
             <div>
@@ -21,7 +20,7 @@
     <div>
         <div>
             <button mat-icon-button color="primary" (click)="item.upload()"
-                [disabled]="item.isReady || item.isConverting || item.isSuccess || item.isError" aria-label="Upload"
+                [disabled]="!item.isReady" aria-label="Upload"
                 matTooltip="Upload">
                 <span class="material-icons">cloud_upload</span>
             </button>

@@ -13,9 +13,6 @@ export class FileUploaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.item.fileLikeObject.$version.subscribe( v => 
-      console.log('test' + v )
-    )
   }
 
 }

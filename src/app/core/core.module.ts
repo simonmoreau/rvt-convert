@@ -13,9 +13,10 @@ import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfig
 
 import { MSALInterceptorConfigFactory, MSALGuardConfigFactory, MSALInstanceFactory } from './authentication/b2c-config';
 import { LoginFailedComponent } from './pages/login-failed/login-failed.component';
+import { WithLoadingPipe } from './pipes/with-loading.pipe';
 
 @NgModule({
-  declarations: [HomeComponent, HeaderComponent, FooterComponent, LoginFailedComponent],
+  declarations: [HomeComponent, HeaderComponent, FooterComponent, LoginFailedComponent, WithLoadingPipe],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -23,7 +24,7 @@ import { LoginFailedComponent } from './pages/login-failed/login-failed.componen
     FlexLayoutModule,
     HttpClientModule
   ],
-  exports:[ HomeComponent, HeaderComponent, FooterComponent],
+  exports:[ HomeComponent, HeaderComponent, FooterComponent, WithLoadingPipe],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

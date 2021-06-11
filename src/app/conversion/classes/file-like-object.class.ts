@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 function isElement(node: any): boolean {
   return !!(node && (node.nodeName || (node.prop && node.attr && node.find)));
@@ -9,6 +9,7 @@ export class FileLikeObject {
   public size: any;
   public type: string;
   public name: string;
+  public extension: string;
   public rawFile: string;
   public $version: Observable<string>;
 
@@ -19,6 +20,15 @@ export class FileLikeObject {
     let postfix = typeof fakePathOrObject === 'string' ? 'FakePath' : 'Object';
     let method = '_createFrom' + postfix;
     (this as any)[method](fakePathOrObject);
+
+    const chunks = this.name.split('.');
+    if (chunks.length < 2) {
+      this.extension = '';
+    }
+    else
+    {
+      this.extension = chunks[ chunks.length - 1 ].toLowerCase();
+    }
   }
 
   public _createFromFakePath(path: string): void {
@@ -26,6 +36,8 @@ export class FileLikeObject {
     this.size = void 0;
     this.type = 'like/' + path.slice(path.lastIndexOf('.') + 1).toLowerCase();
     this.name = path.slice(path.lastIndexOf('/') + path.lastIndexOf('\\') + 2);
+
+    
   }
 
   public _createFromObject(object: {
@@ -42,7 +54,7 @@ export class FileLikeObject {
 
   private getRevitVersion(file: File): Observable<string> {
 
-    const versionSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+    const versionSubject: Subject<string> = new Subject<string>();
     const versionObservable: Observable<string> = versionSubject.asObservable();
 
     if (!file) {
