@@ -4,16 +4,15 @@
             <div class="mat-title overflow">{{ item?.file?.name }}</div>
             <div class="mat-body" fxLayout="row" fxLayoutAlign="start center">
                 <span>{{ item?.fileLikeObject?.size / 1024 / 1024 | number: '.2' }} MB </span>
+                <span *ngIf="item?.isReady"> - Revit {{ item.version }}</span>
             </div>
         </mat-card-content>
         <mat-card-content>
-            <div>
-                <div [ngClass]="{'isError': item?.isError}" fxLayout="row" fxLayoutAlign="start center">
-                    <mat-progress-spinner *ngIf="item?.isUploading || item?.isConverting" diameter="20" mode="indeterminate"></mat-progress-spinner>
-                    <span class="horizontal" *ngIf="item?.progress">{{ item?.progress}} % </span>
-                    <span *ngIf="item?.isError" class="material-icons">error</span>
-                    <span>{{ item?.message}}</span>
-                </div>
+            <div [ngClass]="{'isError': item?.isError}" fxLayout="row" fxLayoutAlign="start center">
+                <mat-progress-spinner *ngIf="item?.isLoading" diameter="20" mode="indeterminate"></mat-progress-spinner>
+                <span class="horizontal" *ngIf="item?.progress">{{ item?.progress}} % </span>
+                <span *ngIf="item?.isError" class="material-icons">error</span>
+                <span>{{ item?.message}}</span>
             </div>
         </mat-card-content>
     </div>

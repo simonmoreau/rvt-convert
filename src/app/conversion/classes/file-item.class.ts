@@ -10,6 +10,7 @@ export class FileItem {
   public headers: any = [];
   public withCredentials: boolean = true;
   public formData: any = [];
+  public isLoading: boolean = false;
   public isReady: boolean = false;
   public isUploading: boolean = false;
   public isUploaded: boolean = false;
@@ -20,6 +21,7 @@ export class FileItem {
   public isError: boolean = false;
   public progress: number = 0;
   public message: string = '';
+  public version: string = '';
   public index: number = void 0;
   public _xhr: XMLHttpRequest;
   public _form: any;
@@ -48,10 +50,17 @@ export class FileItem {
     else
     {
       this.message = 'Looking for the Revit version'
+      this.isLoading = true;
       this.fileLikeObject.$version.subscribe(
-        result => this.isReady = true,
+        result => {
+          this.isReady = true;
+          this.isLoading = false;
+          this.message = 'Ready to upload';
+          this.version = result;
+        },
         error => {
             this.isError = true;
+            this.isLoading = false;
             this.message = error;
           }
         );
