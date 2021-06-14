@@ -9,11 +9,12 @@ import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalInterceptorConfiguration, MsalModule, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
+import { MsalGuard, MsalInterceptor, MsalBroadcastService, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
 
 import { MSALInterceptorConfigFactory, MSALGuardConfigFactory, MSALInstanceFactory } from './authentication/b2c-config';
 import { LoginFailedComponent } from './pages/login-failed/login-failed.component';
 import { WithLoadingPipe } from './pipes/with-loading.pipe';
+import { InterceptorService } from '../conversion/services/interceptor.service';
 
 @NgModule({
   declarations: [HomeComponent, HeaderComponent, FooterComponent, LoginFailedComponent, WithLoadingPipe],
@@ -29,6 +30,11 @@ import { WithLoadingPipe } from './pipes/with-loading.pipe';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MsalInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
       multi: true
     },
     {

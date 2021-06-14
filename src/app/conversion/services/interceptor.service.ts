@@ -4,6 +4,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { Observable, Subject, of, throwError } from 'rxjs';
 import { filter, take, switchMap, catchError, finalize, mergeMap, tap } from 'rxjs/operators';
 
+import { ApiService } from 'src/app/core/services/api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class InterceptorService implements HttpInterceptor {
   forgeTokenSubject: Subject<IForgeToken> = new Subject<IForgeToken>();
   private forgeToken: IForgeToken;
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -116,7 +117,7 @@ export class InterceptorService implements HttpInterceptor {
 
   public refreshToken(): Observable<IForgeToken> {
     // We must refresh the token before using the user
-    return this.apiService.getForgeUploadToken().pipe(
+    return this.apiService.getForgeToken().pipe(
       tap((t) => {
         localStorage.setItem('forgeToken', JSON.stringify(t));
         this.forgeTokenSubject.next(t);
