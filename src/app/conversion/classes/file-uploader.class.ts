@@ -2,6 +2,9 @@ import { EventEmitter } from '@angular/core';
 import { FileLikeObject } from './file-like-object.class';
 import { FileItem } from './file-item.class';
 import { FileType } from './file-type.class';
+import { environment } from 'src/environments/environment';
+import { ForgeUpload, IUploadObject } from './forge-upload.class';
+import { HttpClient } from '@angular/common/http';
 
 function isFile(value: any): boolean {
   return (File && value instanceof File);
@@ -64,7 +67,7 @@ export class FileUploader {
 
   protected _failFilterIndex: number;
 
-  public constructor(options: FileUploaderOptions) {
+  public constructor(options: FileUploaderOptions, private http: HttpClient) {
     this.setOptions(options);
     this.response = new EventEmitter<any>();
   }
@@ -148,13 +151,14 @@ export class FileUploader {
   public uploadItem(value: FileItem): void {
     const index = this.getIndexOfItem(value);
     const item = this.queue[ index ];
-    const transport = this.options.isHTML5 ? '_xhrTransport' : '_iframeTransport';
+    // const transport = this.options.isHTML5 ? '_xhrTransport' : '_iframeTransport';
     item._prepareToUploading();
     if (this.isUploading) {
       return;
     }
     this.isUploading = true;
-    (this as any)[ transport ](item);
+    // (this as any)[ transport ](item);
+    this._forgeUpload(item);
   }
 
   public cancelItem(value: FileItem): void {
@@ -293,6 +297,59 @@ export class FileUploader {
       }
       return parsedHeaders;
     };
+  }
+
+  protected _forgeUpload(item: FileItem): any {
+    const that = this;
+    const forgeRequest = item._forge = new ForgeUpload(this.http);
+    let sendable: any;
+    this._onBeforeUploadItem(item);
+
+    if (typeof item.file.size !== 'number') {
+      throw new TypeError('The file specified is no longer valid');
+    }
+
+    forgeRequest.onprogress.subscribe(progressValues => {
+      const progress = Math.round(progressValues.total !== 0 ? progressValues.loaded * 100 / progressValues.total : 0);
+      this._onProgressItem(item, progress);
+    });
+
+    forgeRequest.onload.subscribe(message => {
+      const headers = null; // this._parseHeaders(forgeRequest.getAllResponseHeaders());
+      const response = this._transformResponse(message, headers);
+      const gist = this._isSuccessCode(forgeRequest.status) ? 'Success' : 'Error';
+      const method = '_on' + gist + 'Item';
+      (this as any)[method](item, response, forgeRequest.status, headers);
+      this._onCompleteItem(item, response, forgeRequest.status, headers);
+    });
+
+    forgeRequest.onerror.subscribe(error => {
+      const headers = null; // this._parseHeaders(forgeRequest.getAllResponseHeaders());
+      const response = this._transformResponse(error, headers);
+      this._onErrorItem(item, response, forgeRequest.status, headers);
+      this._onCompleteItem(item, response, forgeRequest.status, headers);
+    });
+
+    forgeRequest.onabort.subscribe(message => {
+      const headers = null; // this._parseHeaders(forgeRequest.getAllResponseHeaders());
+      const response = this._transformResponse(message, headers);
+      this._onCancelItem(item, response, forgeRequest.status, headers);
+      this._onCompleteItem(item, response, forgeRequest.status, headers);
+    });
+
+    forgeRequest.upload(item.file).subscribe(
+      (value) => { console.log(value)},
+      (error) => { },
+      () => { 
+        const headers = null; // this._parseHeaders(forgeRequest.getAllResponseHeaders());
+        const response = this._transformResponse('Complete', headers);
+        const gist = this._isSuccessCode(forgeRequest.status) ? 'Success' : 'Error';
+        const method = '_on' + gist + 'Item';
+        (this as any)[method](item, response, forgeRequest.status, headers);
+        this._onCompleteItem(item, response, forgeRequest.status, headers);
+       }
+    );
+    this._render();
   }
 
   protected _xhrTransport(item: FileItem): any {

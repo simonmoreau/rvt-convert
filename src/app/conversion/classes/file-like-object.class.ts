@@ -36,8 +36,6 @@ export class FileLikeObject {
     this.size = void 0;
     this.type = 'like/' + path.slice(path.lastIndexOf('.') + 1).toLowerCase();
     this.name = path.slice(path.lastIndexOf('/') + path.lastIndexOf('\\') + 2);
-
-    
   }
 
   public _createFromObject(object: {

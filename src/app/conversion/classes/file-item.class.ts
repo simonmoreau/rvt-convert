@@ -1,5 +1,6 @@
 import { FileLikeObject } from './file-like-object.class';
 import { FileUploader, ParsedResponseHeaders, FileUploaderOptions } from './file-uploader.class';
+import { ForgeUpload } from './forge-upload.class';
 
 export class FileItem {
   public fileLikeObject: FileLikeObject;
@@ -24,6 +25,7 @@ export class FileItem {
   public version: string = '';
   public index: number = void 0;
   public _xhr: XMLHttpRequest;
+  public _forge: ForgeUpload;
   public _form: any;
 
   protected uploader: FileUploader;
@@ -161,6 +163,7 @@ export class FileItem {
     this.isError = true;
     this.progress = 0;
     this.index = void 0;
+    this.message = response;
     this.onError(response, status, headers);
   }
 
