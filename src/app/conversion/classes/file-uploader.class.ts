@@ -301,7 +301,7 @@ export class FileUploader {
 
   protected _forgeUpload(item: FileItem): any {
     const that = this;
-    const forgeRequest = item._forge = new ForgeUpload(this.http);
+    const forgeUpload = item._forge = new ForgeUpload(this.http);
     let sendable: any;
     this._onBeforeUploadItem(item);
 
@@ -309,44 +309,44 @@ export class FileUploader {
       throw new TypeError('The file specified is no longer valid');
     }
 
-    forgeRequest.onprogress.subscribe(progressValues => {
+    forgeUpload.onprogress.subscribe(progressValues => {
       const progress = Math.round(progressValues.total !== 0 ? progressValues.loaded * 100 / progressValues.total : 0);
       this._onProgressItem(item, progress);
     });
 
-    forgeRequest.onload.subscribe(message => {
+    forgeUpload.onload.subscribe(message => {
       const headers = null; // this._parseHeaders(forgeRequest.getAllResponseHeaders());
       const response = this._transformResponse(message, headers);
-      const gist = this._isSuccessCode(forgeRequest.status) ? 'Success' : 'Error';
+      const gist = this._isSuccessCode(forgeUpload.status) ? 'Success' : 'Error';
       const method = '_on' + gist + 'Item';
-      (this as any)[method](item, response, forgeRequest.status, headers);
-      this._onCompleteItem(item, response, forgeRequest.status, headers);
+      (this as any)[method](item, response, forgeUpload.status, headers);
+      this._onCompleteItem(item, response, forgeUpload.status, headers);
     });
 
-    forgeRequest.onerror.subscribe(error => {
+    forgeUpload.onerror.subscribe(error => {
       const headers = null; // this._parseHeaders(forgeRequest.getAllResponseHeaders());
       const response = this._transformResponse(error, headers);
-      this._onErrorItem(item, response, forgeRequest.status, headers);
-      this._onCompleteItem(item, response, forgeRequest.status, headers);
+      this._onErrorItem(item, response, forgeUpload.status, headers);
+      this._onCompleteItem(item, response, forgeUpload.status, headers);
     });
 
-    forgeRequest.onabort.subscribe(message => {
+    forgeUpload.onabort.subscribe(message => {
       const headers = null; // this._parseHeaders(forgeRequest.getAllResponseHeaders());
       const response = this._transformResponse(message, headers);
-      this._onCancelItem(item, response, forgeRequest.status, headers);
-      this._onCompleteItem(item, response, forgeRequest.status, headers);
+      this._onCancelItem(item, response, forgeUpload.status, headers);
+      this._onCompleteItem(item, response, forgeUpload.status, headers);
     });
 
-    forgeRequest.upload(item.file).subscribe(
-      (value) => { console.log(value)},
+    forgeUpload.upload(item.file).subscribe(
+      (value) => { console.log(value);},
       (error) => { },
-      () => { 
+      () => {
         const headers = null; // this._parseHeaders(forgeRequest.getAllResponseHeaders());
         const response = this._transformResponse('Complete', headers);
-        const gist = this._isSuccessCode(forgeRequest.status) ? 'Success' : 'Error';
+        const gist = this._isSuccessCode(forgeUpload.status) ? 'Success' : 'Error';
         const method = '_on' + gist + 'Item';
-        (this as any)[method](item, response, forgeRequest.status, headers);
-        this._onCompleteItem(item, response, forgeRequest.status, headers);
+        (this as any)[method](item, response, forgeUpload.status, headers);
+        this._onCompleteItem(item, response, forgeUpload.status, headers);
        }
     );
     this._render();

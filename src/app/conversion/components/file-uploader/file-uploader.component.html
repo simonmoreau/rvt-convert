@@ -9,11 +9,16 @@
             <mat-progress-spinner *ngIf="item?.isLoading" diameter="20" mode="indeterminate"></mat-progress-spinner>
             <span class="horizontal" *ngIf="item?.progress">{{ item?.progress}} % </span>
             <span *ngIf="item?.isError" class="material-icons">error</span>
+            <span style="width: 5px;"></span>
             <span>{{ item?.message}}</span>
         </div>
     </div>
     <div>
         <div>
+            <button mat-icon-button color="primary" (click)="openDialog()" aria-label="Setup"
+                matTooltip="Setup">
+                <span class="material-icons">settings</span>
+            </button>
             <button mat-icon-button color="primary" (click)="item.upload()"
                 [disabled]="!item.isReady" aria-label="Upload"
                 matTooltip="Upload">

@@ -3,8 +3,6 @@ import { from, Observable, pipe, Subject, throwError } from 'rxjs';
 import { catchError, finalize, map, mergeAll } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-
-
 export class ForgeUpload {
   public forgeURL = 'https://developer.api.autodesk.com';
   private dasApiRoot = this.forgeURL + '/da/us-east/v3';

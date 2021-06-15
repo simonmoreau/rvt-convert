@@ -14,7 +14,7 @@ export class UploaderComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.uploader = new FileUploader({},this.http);
+    this.uploader = new FileUploader({}, this.http);
   }
 
 }

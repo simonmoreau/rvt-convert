@@ -125,11 +125,13 @@ export class FileItem {
   public _onBeforeUpload(): void {
     this.isReady = true;
     this.isUploading = true;
+    this.isLoading = true;
     this.isUploaded = false;
     this.isSuccess = false;
     this.isCancel = false;
     this.isError = false;
     this.progress = 0;
+    this.message = 'Uploading your file...';
     this.onBeforeUpload();
   }
 
@@ -145,18 +147,21 @@ export class FileItem {
   public _onSuccess(response: string, status: number, headers: ParsedResponseHeaders): void {
     this.isReady = false;
     this.isUploading = false;
+    this.isLoading = false;
     this.isUploaded = true;
     this.isSuccess = true;
     this.isCancel = false;
     this.isError = false;
     this.progress = 100;
     this.index = void 0;
+    this.message = 'Uploaded !';
     this.onSuccess(response, status, headers);
   }
 
   public _onError(response: string, status: number, headers: ParsedResponseHeaders): void {
     this.isReady = false;
     this.isUploading = false;
+    this.isLoading = false;
     this.isUploaded = true;
     this.isSuccess = false;
     this.isCancel = false;
@@ -170,12 +175,14 @@ export class FileItem {
   public _onCancel(response: string, status: number, headers: ParsedResponseHeaders): void {
     this.isReady = false;
     this.isUploading = false;
+    this.isLoading = false;
     this.isUploaded = false;
     this.isSuccess = false;
     this.isCancel = true;
     this.isError = false;
     this.progress = 0;
     this.index = void 0;
+    this.message = 'Canceled';
     this.onCancel(response, status, headers);
   }
 

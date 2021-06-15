@@ -8,6 +8,8 @@ import { MaterialModule } from '../material.module';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreModule } from '../core/core.module';
+import { ConversionSetupComponent } from './components/conversion-setup/conversion-setup.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,13 +18,15 @@ import { CoreModule } from '../core/core.module';
     FileDropDirective,
     FileSelectDirective,
     UploaderComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    ConversionSetupComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    CoreModule
+    CoreModule,
+    FormsModule
   ],
   exports:[
     UploaderComponent
