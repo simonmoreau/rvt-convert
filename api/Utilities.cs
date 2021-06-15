@@ -84,6 +84,14 @@ namespace api
 
       return existingCredits + addedCreditsNumber;
     }
+
+    public async Task<User> GetUserByUserId(string userId)
+    {
+      // Get all users (one page)
+      User existingUser = await this._graphServiceClient.Users[userId].Request().GetAsync();
+
+      return existingUser;
+    }
   }
 
   internal class B2cCustomAttributeHelper
