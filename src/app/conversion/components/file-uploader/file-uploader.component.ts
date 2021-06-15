@@ -21,7 +21,7 @@ export class FileUploaderComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ConversionSetupComponent, {
-      width: '250px',
+      height: '400px',
       data: {name: this.item.fileLikeObject.name, animal: this.animal}
     });
 

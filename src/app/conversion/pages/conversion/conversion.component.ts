@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ConversionSetupComponent, DialogData } from '../../components/conversion-setup/conversion-setup.component';
 
 @Component({
   selector: 'app-conversion',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConversionComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConversionSetupComponent, {
+      height: '800px',
+      data: {name: 'this.item.fileLikeObject.name', animal: 'this.animal'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

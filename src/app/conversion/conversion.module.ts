@@ -10,6 +10,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreModule } from '../core/core.module';
 import { ConversionSetupComponent } from './components/conversion-setup/conversion-setup.component';
 import { FormsModule } from '@angular/forms';
+import { ConversionSetupDwgComponent } from './components/conversion-setup-dwg/conversion-setup-dwg.component';
+import { ConversionSetupIfcComponent } from './components/conversion-setup-ifc/conversion-setup-ifc.component';
+import { ConversionViewListComponent } from './components/conversion-view-list/conversion-view-list.component';
+import { ViewTypePipe } from './pipes/view-type.pipe';
 
 
 @NgModule({
@@ -19,7 +23,11 @@ import { FormsModule } from '@angular/forms';
     FileSelectDirective,
     UploaderComponent,
     FileUploaderComponent,
-    ConversionSetupComponent
+    ConversionSetupComponent,
+    ConversionSetupDwgComponent,
+    ConversionSetupIfcComponent,
+    ConversionViewListComponent,
+    ViewTypePipe
   ],
   imports: [
     CommonModule,

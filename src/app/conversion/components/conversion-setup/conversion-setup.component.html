@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<h1 subheading-2>Hi {{data.name}}</h1>
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="DWG"><app-conversion-setup-dwg></app-conversion-setup-dwg></mat-tab>
+    <mat-tab label="IFC"><app-conversion-setup-ifc></app-conversion-setup-ifc></mat-tab>
+    <mat-tab label="PDF">Content 3</mat-tab>
+  </mat-tab-group>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
