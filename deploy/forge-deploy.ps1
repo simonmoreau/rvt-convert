@@ -16,11 +16,14 @@ $env:FORGE_CLIENT_ID = $settings.Values.FORGE_CLIENT_ID
 $env:FORGE_CLIENT_SECRET = $settings.Values.FORGE_CLIENT_SECRET
 
 $bundlePath = Join-Path -Path $scriptDir -ChildPath RevitToIFCBundle.zip
-# forge-dm list-buckets
+forge-dm list-buckets
+
+$text = $settings.Values.inputStorageKey
+Write-Output $text
 
 ## Create the Forge bucket to store the converted files
-# forge-dm create-bucket -r persistent $settings.Values.ifcStorageKey
-# forge-dm create-bucket -r persistent $settings.Values.rvtStorageKey
+# forge-dm create-bucket -r persistent $settings.Values.outputStorageKey
+# forge-dm create-bucket -r persistent $settings.Values.inputStorageKey
 
 ## Create an array with every version of the engine
 $engineVersions = '2018','2019', '2020', '2021', '2022'

@@ -64,7 +64,7 @@ namespace api
 
       var returnOrbject = new
       {
-        name = responseMessage
+        name = user.DisplayName
       };
 
 

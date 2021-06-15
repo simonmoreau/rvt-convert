@@ -38,10 +38,10 @@
         "appArtifactLocation": {
             "value": "dist/angular-basic"
         },
-        "ifcStorageKey": {
+        "outputStorageKey": {
             "value": "ifc-storage-dev"
         },
-        "rvtStorageKey": {
+        "inputStorageKey": {
             "value": "rvt-storage-dev"
         },
         "TenantId": {

@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  ifcStorageKey: 'ifc-storage',
-  rvtStorageKey: 'rvt-storage',
+  outputStorageKey: 'output-storage',
+  inputStorageKey: 'input-storage',
   localDomain: 'rvt-convert.bim42.com/',
   localUri: 'https://rvt-convert.bim42.com/',
   apiUri: 'https://rvtconvertfunction.azurewebsites.net',

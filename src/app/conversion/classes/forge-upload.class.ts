@@ -17,7 +17,7 @@ export class ForgeUpload {
   public onload = new Subject<string>();
 
   public constructor(private http: HttpClient) {
-      this.bucketKey = environment.rvtStorageKey;
+      this.bucketKey = environment.inputStorageKey;
   }
 
   public upload(file: File): Observable<IUploadObject> {
