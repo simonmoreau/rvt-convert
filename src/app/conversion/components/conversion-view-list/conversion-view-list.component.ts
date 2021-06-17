@@ -5,9 +5,36 @@ import { MatTableDataSource } from '@angular/material/table';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MatIconRegistry} from '@angular/material/icon';
 
-export interface View {
+export class View {
   name: string;
   viewType: ViewType;
+  viewIcon: string;
+
+  constructor(name:string, viewType: ViewType)
+  {
+    this.name = name;
+    this.viewType = viewType;
+    this.viewIcon = this.GetViewIcon();
+  }
+
+  private GetViewIcon(): string {
+    switch (this.viewType) {
+      case ViewType.TableView:
+        return 'ceilling';
+      case ViewType.View3D:
+        return 'house_3d';
+      case ViewType.ViewDrafting:
+        return 'ceilling';
+      case ViewType.ViewPlan:
+        return 'plan';
+      case ViewType.ViewSection:
+        return 'elevation';
+      case ViewType.ViewSheet:
+        return 'sheet';
+      default:
+        return 'house_3d';
+    }
+  }
 }
 
 export enum ViewType {
@@ -20,16 +47,19 @@ export enum ViewType {
 }
 
 const viewData: View[] = [
-  { viewType: 0, name: 'Hydrogen' },
-  { viewType: 0, name: 'Helium' },
-  { viewType: 1, name: 'Lithium' },
-  { viewType: 1, name: 'Beryllium'},
-  { viewType: 2, name: 'Boron' },
-  { viewType: 2, name: 'Carbon'},
-  { viewType: 3, name: 'Nitrogen' },
-  { viewType: 3, name: 'Oxygen' },
-  { viewType: 4, name: 'Fluorine' },
-  { viewType: 4, name: 'Neon'},
+  new View('3D View',0),
+  new View('Elevation East',0),
+  new View('Elevation North',0),
+  new View('Elevation South',1),
+  new View('Elevation West',1),
+  new View('FloorplanLevel 0',1),
+  new View('FloorplanLevel 1',2),
+  new View('FloorplanSIte',2),
+  new View('LeendDoorLeend',3),
+  new View('LeendKePlan',3),
+  new View('ReflectedcellmPlanLevelO',4),
+  new View('ReflectedcellmPlanLeveH',4),
+  new View('SheetAmO—Unnamed',5)  
 ];
 
 /**
@@ -52,6 +82,12 @@ export class ConversionViewListComponent {
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('thumbs-up', sanitizer.bypassSecurityTrustResourceUrl('assets/thumpup.svg'));
+    iconRegistry.addSvgIcon('house_3d', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/house_3d.svg'));
+    iconRegistry.addSvgIcon('ceilling', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/ceilling.svg'));
+    iconRegistry.addSvgIcon('elevation', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/elevation.svg'));
+    iconRegistry.addSvgIcon('legend', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/legend.svg'));
+    iconRegistry.addSvgIcon('plan', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/plan.svg'));
+    iconRegistry.addSvgIcon('sheet', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sheet.svg'));
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
