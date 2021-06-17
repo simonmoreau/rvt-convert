@@ -2,6 +2,9 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
+import {DomSanitizer} from '@angular/platform-browser';
+import {MatIconRegistry} from '@angular/material/icon';
+
 export interface View {
   name: string;
   viewType: ViewType;
@@ -38,6 +41,7 @@ const viewData: View[] = [
   styleUrls: ['./conversion-view-list.component.scss'],
 })
 export class ConversionViewListComponent {
+  
   displayedColumns: string[] = [
     'select',
     'viewType',
@@ -45,6 +49,10 @@ export class ConversionViewListComponent {
   ];
   dataSource = new MatTableDataSource<View>(viewData);
   selection = new SelectionModel<View>(true, []);
+
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon('thumbs-up', sanitizer.bypassSecurityTrustResourceUrl('assets/thumpup.svg'));
+  }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {

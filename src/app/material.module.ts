@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -12,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table'  
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [],
@@ -27,7 +30,9 @@ import { MatTableModule } from '@angular/material/table'
     MatFormFieldModule,
     MatTabsModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    HttpClientModule
   ]
 })
 export class MaterialModule { }
