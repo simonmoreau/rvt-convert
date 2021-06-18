@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ConversionSetupDwgComponent } from './components/conversion-setup-dwg/conversion-setup-dwg.component';
 import { ConversionSetupIfcComponent } from './components/conversion-setup-ifc/conversion-setup-ifc.component';
 import { ConversionViewListComponent } from './components/conversion-view-list/conversion-view-list.component';
+import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ConversionViewListComponent } from './components/conversion-view-list/c
     ConversionSetupComponent,
     ConversionSetupDwgComponent,
     ConversionSetupIfcComponent,
-    ConversionViewListComponent
+    ConversionViewListComponent,
+    EnumToArrayPipe
   ],
   imports: [
     CommonModule,

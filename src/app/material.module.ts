@@ -14,6 +14,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table'  
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -32,6 +35,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatCheckboxModule,
     MatTableModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSelectModule,
     HttpClientModule
   ]
 })

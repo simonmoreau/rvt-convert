@@ -17,6 +17,7 @@ export class ConversionComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(ConversionSetupComponent, {
       height: '800px',
+      width: '800px',
       data: {name: 'this.item.fileLikeObject.name', animal: 'this.animal'}
     });
 
