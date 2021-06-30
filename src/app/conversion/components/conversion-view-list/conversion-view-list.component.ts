@@ -57,8 +57,8 @@ export class ConversionViewListComponent implements  AfterViewInit, OnInit  {
     iconRegistry.addSvgIcon('legend', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/legend.svg'));
     iconRegistry.addSvgIcon('plan', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/plan.svg'));
     iconRegistry.addSvgIcon('sheet', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sheet.svg'));
-    
   }
+
   ngOnInit(): void {
     this.dataSource.filterPredicate = this.customFilterPredicate();
   }
