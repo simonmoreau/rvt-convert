@@ -1,49 +1,54 @@
 <mat-checkbox class="margin" [(ngModel)]="export">Export to IFC</mat-checkbox>
 <mat-tab-group animationDuration="0ms" [ngClass]="{'disabled': !export}">
   <mat-tab label="General">
-    <div fxLayout="column" class="configuration-tab">
-      <mat-form-field class="view-type-select">
-        <mat-label>IFC Version:</mat-label>
-        <mat-select [(ngModel)]="ifcExportConfiguration.IFCVersion">
-          <mat-option *ngFor="let ifcVersionAttribute of ifcVersionAttributes" [value]="ifcVersionAttribute.value">
-            {{ifcVersionAttribute.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="view-type-select">
-        <mat-label>File type:</mat-label>
-        <mat-select [(ngModel)]="ifcExportConfiguration.IFCFileType">
-          <mat-option *ngFor="let ifcFileFormatAttribute of ifcFileFormatAttributes" [value]="ifcFileFormatAttribute.value">
-            {{ifcFileFormatAttribute.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="view-type-select">
-        <mat-label>Phase to export:</mat-label>
-        <mat-select [(ngModel)]="ifcExportConfiguration.ActivePhaseId">
-          <mat-option *ngFor="let activePhaseIdAttribute of activePhaseIdAttributes" [value]="activePhaseIdAttribute.value">
-            {{activePhaseIdAttribute.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="view-type-select">
-        <mat-label>Space boundaries:</mat-label>
-        <mat-select [(ngModel)]="ifcExportConfiguration.SpaceBoundaries">
-          <mat-option *ngFor="let spaceBoundariesAttribute of spaceBoundariesAttributes" [value]="spaceBoundariesAttribute.value">
-            {{spaceBoundariesAttribute.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="view-type-select">
-        <mat-label>Project Origin:</mat-label>
-        <mat-select [(ngModel)]="ifcExportConfiguration.SitePlacement">
-          <mat-option *ngFor="let siteTransformBasisAttribute of siteTransformBasisAttributes" [value]="siteTransformBasisAttribute.value">
-            {{siteTransformBasisAttribute.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div fxLayout="row" class="configuration-tab">
+      <div fxLayout="column" fxFlex="50">
+        <mat-form-field class="view-type-select">
+          <mat-label>IFC Version:</mat-label>
+          <mat-select [(ngModel)]="ifcExportConfiguration.IFCVersion">
+            <mat-option *ngFor="let ifcVersionAttribute of ifcVersionAttributes" [value]="ifcVersionAttribute.value">
+              {{ifcVersionAttribute.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="view-type-select">
+          <mat-label>File type:</mat-label>
+          <mat-select [(ngModel)]="ifcExportConfiguration.IFCFileType">
+            <mat-option *ngFor="let ifcFileFormatAttribute of ifcFileFormatAttributes" [value]="ifcFileFormatAttribute.value">
+              {{ifcFileFormatAttribute.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="view-type-select">
+          <mat-label>Phase to export:</mat-label>
+          <mat-select [(ngModel)]="ifcExportConfiguration.ActivePhaseId">
+            <mat-option *ngFor="let activePhaseIdAttribute of activePhaseIdAttributes" [value]="activePhaseIdAttribute.value">
+              {{activePhaseIdAttribute.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="view-type-select">
+          <mat-label>Space boundaries:</mat-label>
+          <mat-select [(ngModel)]="ifcExportConfiguration.SpaceBoundaries">
+            <mat-option *ngFor="let spaceBoundariesAttribute of spaceBoundariesAttributes" [value]="spaceBoundariesAttribute.value">
+              {{spaceBoundariesAttribute.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="view-type-select">
+          <mat-label>Project Origin:</mat-label>
+          <mat-select [(ngModel)]="ifcExportConfiguration.SitePlacement">
+            <mat-option *ngFor="let siteTransformBasisAttribute of siteTransformBasisAttributes" [value]="siteTransformBasisAttribute.value">
+              {{siteTransformBasisAttribute.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxFlex="50">
+        <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.SplitWallsAndColumns">Split Walls, Columns, Ducts by Level</mat-checkbox>
+        <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.IncludeSteelElements">Include Steel Elements</mat-checkbox>
+      </div>
     </div>
-
   </mat-tab>
   <mat-tab label="Aditional Content">
     <div fxLayout="column" class="configuration-tab">
