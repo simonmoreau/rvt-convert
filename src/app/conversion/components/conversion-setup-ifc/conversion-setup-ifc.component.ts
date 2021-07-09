@@ -14,6 +14,7 @@ export class ConversionSetupIfcComponent implements OnInit {
   activePhaseIdAttributes: ActivePhaseIdAttribute[] = ActivePhaseIdAttribute.ActivePhaseIdAttributes;
   spaceBoundariesAttributes: SpaceBoundariesAttribute[] = SpaceBoundariesAttribute.SpaceBoundariesAttributes;
   siteTransformBasisAttributes: SiteTransformBasisAttribute[] = SiteTransformBasisAttribute.SiteTransformBasisAttributes;
+  tessellationLevelOfDetailAttributes: TessellationLevelOfDetailAttribute[] = TessellationLevelOfDetailAttribute.TessellationLevelOfDetailAttributes;
 
   ifcExportConfiguration: IFCExportConfiguration;
   m_configurations: IFCExportConfiguration[] =[];
@@ -103,4 +104,16 @@ export class SiteTransformBasisAttribute {
   name: string;
   index: number;
   value: SiteTransformBasis;
+}
+
+export class TessellationLevelOfDetailAttribute {
+  static TessellationLevelOfDetailAttributes: TessellationLevelOfDetailAttribute[] = [
+    { name: 'Extra Low', index: 0, value: 0 },
+    { name: 'Low', index: 1, value: 0.3 },
+    { name: 'Medium', index: 2, value: 0.6 },
+    { name: 'Hight', index: 3, value: 1 }
+  ];
+  name: string;
+  index: number;
+  value: number;
 }

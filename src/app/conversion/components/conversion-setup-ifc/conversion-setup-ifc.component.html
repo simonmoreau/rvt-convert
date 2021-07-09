@@ -62,7 +62,7 @@
 
       <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportUserDefinedPsets">Export user defined property sets</mat-checkbox>
       <div [ngClass]="{'disabled': !ifcExportConfiguration.ExportUserDefinedPsets}">
-        <input type="file" name="userDefinedPsets" id="userDefinedPsets" accept=".txt" class="inputfile" />
+        <input type="file" name="userDefinedPsets" id="userDefinedPsets" accept="txt" class="inputfile" />
         <label for="file">
           <span class="material-icons">add_circle</span>
           Select a user defined parameter sets file
@@ -71,7 +71,7 @@
       
       <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportUserDefinedParameterMapping">Export parameter mapping table</mat-checkbox>
       <div [ngClass]="{'disabled': !ifcExportConfiguration.ExportUserDefinedParameterMapping}">
-        <input type="file" name="userDefinedPsets" id="userDefinedPsets" accept=".txt" class="inputfile" />
+        <input type="file" name="userDefinedPsets" id="userDefinedPsets" accept="txt" class="inputfile" />
         <label for="file">
           <span class="material-icons">add_circle</span>
           Select a mapping file
@@ -80,12 +80,30 @@
     </div>
   </mat-tab>
   <mat-tab label="Level of Detail">
-
+    <div fxLayout="column" class="configuration-tab">
+      <mat-form-field class="view-type-select">
+        <mat-label>Level of detail:</mat-label>
+        <mat-select [(ngModel)]="ifcExportConfiguration.TessellationLevelOfDetail">
+          <mat-option *ngFor="let tessellationLevelOfDetailAttribute of tessellationLevelOfDetailAttributes" [value]="tessellationLevelOfDetailAttribute.value">
+            {{tessellationLevelOfDetailAttribute.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </mat-tab>
   <mat-tab label="Advanced">
-    <section class="section">
-      <mat-checkbox class="example-margin">Check me!</mat-checkbox>
-      <mat-checkbox class="example-margin">Disabled</mat-checkbox>
-    </section>
+    <div fxLayout="column" class="configuration-tab">
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportPartsAsBuildingElements">Export parts as building elements</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportSolidModelRep">Allow use of mixed "Solid Model" representation</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.UseActiveViewGeometry">Use active view when creating geometry</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.UseFamilyAndTypeNameForReference">Use family and type name for reference</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.Use2DRoomBoundaryForVolume">Use 2D room boundaries for room volume</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.IncludeSiteElevation">Include IFCSITE elevation in the site local placement origin</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.StoreIFCGUID">Store the IFC GUID in an element parameter after export</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportBoundingBox">Export bounding box</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.UseOnlyTriangulation">Keep Tessellated Geometry as Triangulation</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.UseTypeNameOnlyForIfcType">Use Type name only for IFCType name</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.UseVisibleRevitNameAsEntityName">Use visible Revit name as the IFCEntity name</mat-checkbox>
+    </div>
   </mat-tab>
 </mat-tab-group>
