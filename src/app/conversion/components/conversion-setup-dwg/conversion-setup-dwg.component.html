@@ -1,5 +1,5 @@
-<p>conversion-setup-dwg works!</p>
-<div style="margin: 5px;">
+<mat-checkbox class="margin" [(ngModel)]="export">Export to DWG</mat-checkbox>
+<div style="margin: 5px;" [ngClass]="{'disabled': !export}">
     <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
