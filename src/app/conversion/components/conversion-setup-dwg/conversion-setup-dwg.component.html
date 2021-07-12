@@ -1,26 +1,111 @@
 <mat-checkbox class="margin" [(ngModel)]="export">Export to DWG</mat-checkbox>
-<div style="margin: 5px;" [ngClass]="{'disabled': !export}">
-    <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    View List
-                </mat-panel-title>
-                <mat-panel-description>
-                    Select views to be exported
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <app-conversion-view-list></app-conversion-view-list>
-        </mat-expansion-panel>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Parameters
-                </mat-panel-title>
-                <mat-panel-description>
-                    Export settings
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-        </mat-expansion-panel>
-    </mat-accordion>
-</div>
+<mat-tab-group animationDuration="0ms" [ngClass]="{'disabled': !export}">
+    <mat-tab label="Layers">
+        <div fxLayout="column" class="configuration-tab">
+            <mat-form-field class="view-type-select">
+                <mat-label>Export layer options:</mat-label>
+                <mat-select [(ngModel)]="dwgExportConfiguration.PropOverrides">
+                    <mat-option *ngFor="let propOverridesAttribute of propOverridesAttributes"
+                        [value]="propOverridesAttribute.value">
+                        {{propOverridesAttribute.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-tab>
+    <mat-tab label="Lines">
+        <div fxLayout="column" class="configuration-tab">
+            <mat-form-field class="view-type-select">
+                <mat-label>Set linetype scale:</mat-label>
+                <mat-select [(ngModel)]="dwgExportConfiguration.LineScaling">
+                    <mat-option *ngFor="let lineScalingAttribute of lineScalingAttributes"
+                        [value]="lineScalingAttribute.value">
+                        {{lineScalingAttribute.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-tab>
+    <mat-tab label="Patterns">
+        <div fxLayout="column" class="configuration-tab">
+            <!-- <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportInternalRevitPropertySets">Export Revit property sets</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportIFCCommonPropertySets">Export IFC common property sets</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportBaseQuantities">Export base quantities</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportSchedulesAsPsets">Export schedules as property sets</mat-checkbox>
+
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportUserDefinedPsets">Export user defined property sets</mat-checkbox>
+      <div [ngClass]="{'disabled': !ifcExportConfiguration.ExportUserDefinedPsets}">
+        <input type="file" name="userDefinedPsets" id="userDefinedPsets" accept="txt" class="inputfile" />
+        <label for="file">
+          <span class="material-icons">add_circle</span>
+          Select a user defined parameter sets file
+        </label>
+      </div>
+      
+      <mat-checkbox class="checkbox" [(ngModel)]="ifcExportConfiguration.ExportUserDefinedParameterMapping">Export parameter mapping table</mat-checkbox>
+      <div [ngClass]="{'disabled': !ifcExportConfiguration.ExportUserDefinedParameterMapping}">
+        <input type="file" name="userDefinedPsets" id="userDefinedPsets" accept="txt" class="inputfile" />
+        <label for="file">
+          <span class="material-icons">add_circle</span>
+          Select a mapping file
+        </label>
+      </div> -->
+        </div>
+    </mat-tab>
+    <mat-tab label="Text & Fonts">
+        <div fxLayout="column" class="configuration-tab">
+            <mat-form-field class="view-type-select">
+                <mat-label>Text behavior when exported:</mat-label>
+                <mat-select [(ngModel)]="dwgExportConfiguration.TextTreatment">
+                    <mat-option *ngFor="let textTreatmentAttribute of textTreatmentAttributes"
+                        [value]="textTreatmentAttribute.value">
+                        {{textTreatmentAttribute.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </mat-tab>
+    <mat-tab label="Colors">
+        <div fxLayout="column" class="configuration-tab">
+            <label id="colors-radio-group-label">Export colors as:</label>
+            <mat-radio-group aria-labelledby="colors-radio-group-label" class="radio-group"
+                [(ngModel)]="dwgExportConfiguration.Colors">
+                <mat-radio-button class="radio-button" [value]=0>Index color (255 colors)</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=1>Specified in object styles (True Color - RGB
+                    values)</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=2>Specified in view (True Color - RGB values)
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </mat-tab>
+    <mat-tab label="Solids">
+        <div fxLayout="column" class="configuration-tab">
+            <label id="solids-radio-group-label">Export solids as:</label>
+            <mat-radio-group aria-labelledby="solids-radio-group-label" class="radio-group"
+                [(ngModel)]="dwgExportConfiguration.ExportOfSolids">
+                <mat-radio-button class="radio-button" [value]=0>Polymesh</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=1>ACIS solids</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </mat-tab>
+    <mat-tab label="Units & Coordinates">
+        <div fxLayout="column" class="configuration-tab">
+            <label id="unit-radio-group-label">One DWG unit is:</label>
+            <mat-radio-group aria-labelledby="unit-radio-group-label" class="radio-group"
+                [(ngModel)]="dwgExportConfiguration.TargetUnit">
+                <mat-radio-button class="radio-button" [value]=0>Default (Depends on Revit's current units)</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=1>Inch</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=2>Foot</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=3>Millimeter</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=4>Centimeter</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=5>Meter</mat-radio-button>
+            </mat-radio-group>
+            <label id="coordinate-radio-group-label">Coordinate Base:</label>
+            <mat-radio-group aria-labelledby="coordinate-radio-group-label" class="radio-group"
+                [(ngModel)]="dwgExportConfiguration.SharedCoords">
+                <mat-radio-button class="radio-button" [value]=true>Shared Coordinates</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=false>Internal Origin</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </mat-tab>
+</mat-tab-group>

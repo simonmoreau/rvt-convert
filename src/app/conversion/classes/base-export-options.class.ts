@@ -47,6 +47,10 @@ export enum PropOverrideMode {
 // Summary:
 //     The base class for options used to export DWG, DXF and DGN format files.
 export class BaseExportOptions {
+
+     constructor() {
+
+     }
     //
     // Summary:
     //     How to export overridden object styles. Default value is PropOverrideMode.ByEntity.
@@ -55,7 +59,7 @@ export class BaseExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public PropOverrides: PropOverrideMode;
+    public PropOverrides: PropOverrideMode = PropOverrideMode.ByEntity;
     //
     // Summary:
     //     Whether or not to hide the scope box. Default value is false.
@@ -94,7 +98,7 @@ export class BaseExportOptions {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     When setting this property: A non-optional argument was null
-    public LayerMapping: string;
+    public LayerMapping: string = '';
     //
     // Summary:
     //     Export color mode. Default value is ExportColorMode.IndexColors.
@@ -103,7 +107,7 @@ export class BaseExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public Colors: ExportColorMode;
+    public Colors: ExportColorMode = ExportColorMode.IndexColors;
     //
     // Summary:
     //     Custom hatch patterns (pat) file name.

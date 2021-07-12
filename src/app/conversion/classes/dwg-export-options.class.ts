@@ -173,6 +173,10 @@ export enum LineScaling {
 // Summary:
 //     The base class for options used to export DWG and DXF format files.
 export class ACADExportOptions extends BaseExportOptions {
+
+    constructor() {
+        super();
+    }
     //
     // Summary:
     //     The color that will be set as hatch backgound color on the exported hatch. This
@@ -182,7 +186,7 @@ export class ACADExportOptions extends BaseExportOptions {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     When setting this property: A non-optional argument was null
-    public HatchBackgroundColor: Color;
+    public HatchBackgroundColor: Color = new Color(0,0,0);
 
 
     //
@@ -199,7 +203,7 @@ export class ACADExportOptions extends BaseExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public FileVersion: ACADVersion;
+    public FileVersion: ACADVersion = ACADVersion.Default;
 
 
     //
@@ -211,7 +215,7 @@ export class ACADExportOptions extends BaseExportOptions {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     When setting this property: A non-optional argument was null
-    public NonplotSuffix: string;
+    public NonplotSuffix: string = '';
 
 
     //
@@ -246,7 +250,7 @@ export class ACADExportOptions extends BaseExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public TargetUnit: ExportUnit;
+    public TargetUnit: ExportUnit = ExportUnit.Default;
 
 
     //
@@ -257,7 +261,7 @@ export class ACADExportOptions extends BaseExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public ACAPreference: ACAObjectPreference;
+    public ACAPreference: ACAObjectPreference = ACAObjectPreference.Object;
 
 
     //
@@ -268,7 +272,7 @@ export class ACADExportOptions extends BaseExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public ExportOfSolids: SolidGeometry;
+    public ExportOfSolids: SolidGeometry = SolidGeometry.Polymesh;
 
 
     //
@@ -279,7 +283,7 @@ export class ACADExportOptions extends BaseExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public TextTreatment: TextTreatment;
+    public TextTreatment: TextTreatment = TextTreatment.Exact;
 
 
     //
@@ -289,7 +293,7 @@ export class ACADExportOptions extends BaseExportOptions {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     When setting this property: A non-optional argument was null
-    public LinetypesFileName: string;
+    public LinetypesFileName: string = '';
 
 
     //
@@ -300,5 +304,5 @@ export class ACADExportOptions extends BaseExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public LineScaling: LineScaling;
+    public LineScaling: LineScaling = LineScaling.ViewScale;
 }
