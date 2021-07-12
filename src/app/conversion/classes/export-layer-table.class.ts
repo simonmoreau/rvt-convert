@@ -1,5 +1,3 @@
-import { retry } from "rxjs/operators";
-
 export enum SpecialType {
     //
     // Summary:
@@ -495,7 +493,9 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was NULL
-    public static GetAvaliableLayerModifierTypes(document: Document | null, exportLayerKey: ExportLayerKey | null) : Array<ModifierType> | null;
+    // public static GetAvaliableLayerModifierTypes(document: Document | null, exportLayerKey: ExportLayerKey | null) : Array<ModifierType> | null {
+
+    // }
     //
     // Summary:
     //     Inserts a (key,info) pair into Export layer table.
@@ -514,11 +514,15 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     //
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
-    public Add(exportLayerKey: ExportLayerKey | null, exportLayerInfo: ExportLayerInfo | null) : void;
+    public Add(exportLayerKey: ExportLayerKey | null, exportLayerInfo: ExportLayerInfo | null) : void {
+        this._exportLayerTable.set(exportLayerKey,exportLayerInfo);
+    }
     //
     // Summary:
     //     Removes all contents stored in the table.
-    public Clear() : void;
+    public Clear() : void {
+        this._exportLayerTable.clear();
+    }
     //
     // Summary:
     //     Checks whether a layer key exists in the table.
@@ -533,14 +537,9 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
-    public ContainsKey(exportlayerKey: ExportLayerKey | null) : boolean;
-    //
-    // Summary:
-    //     Returns an enumerator that iterates through a collection.
-    //
-    // Returns:
-    //     An IEnumerator object that can be used to iterate through the collection.
-    public GetEnumerator() : IEnumerator<[ExportLayerKey, ExportLayerInfo]> | null;
+    public ContainsKey(exportlayerKey: ExportLayerKey | null) : boolean {
+        return this._exportLayerTable.has(exportlayerKey);
+    }
     //
     // Summary:
     //     Gets a copy of the layer info associated to the input pattern key.
@@ -558,29 +557,27 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     //
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
-    public GetExportLayerInfo(exportLayerKey: ExportLayerKey | null) : ExportLayerInfo;
+    public GetExportLayerInfo(exportLayerKey: ExportLayerKey | null) : ExportLayerInfo {
+        return this._exportLayerTable.get(exportLayerKey);
+    }
     //
     // Summary:
     //     Gets all the keys stored in the map.
     //
     // Returns:
     //     Return the key array.
-    public GetKeys() : Array<ExportLayerKey> | null;
-    //
-    // Summary:
-    //     Returns a LayerTableIterator that iterates through the collection.
-    //
-    // Returns:
-    //     A LayerTableIterator object that can be used to iterate through key-value pairs
-    //     in the collection.
-    public GetLayerTableIterator() : ExportLayerTableIterator;
+    public GetKeys() : ExportLayerKey[] | null {
+        return Array.from(this._exportLayerTable.keys());
+    }
     //
     // Summary:
     //     Returns all the values stored in the map.
     //
     // Returns:
     //     Return the info array.
-    public GetValues() : Array<ExportLayerInfo> | null;
+    public GetValues() : ExportLayerInfo[] | null {
+        return Array.from(this._exportLayerTable.values());
+    }
     //
     // Summary:
     //     Removes the pair (key, info) by pattern key.
@@ -592,6 +589,7 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
-    public Remove(exportLayerKey: ExportLayerKey | null) : void;
-
+    public Remove(exportLayerKey: ExportLayerKey | null) : void {
+        this._exportLayerTable.delete(exportLayerKey);
+    }
 }

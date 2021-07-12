@@ -1,5 +1,7 @@
 import { ExportFontTable } from "./export-font-table.class";
 import { ExportLayerTable } from "./export-layer-table.class";
+import { ExportLinetypeTable } from "./export-line-table.class";
+import { ExportPatternTable } from "./export-pattern-table.class";
 
 
 export enum ExportColorMode {
@@ -132,7 +134,7 @@ export class BaseExportOptions {
     //     The predefined setups may be used for export to both DWG and DXF formats. To
     //     get predefined options in the desired format use the static method getPredefinedOptions
     //     defined in DWGExportOptions or DXFExportOptions respectively.
-    public static GetPredefinedSetupNames(document: Document | null) : Array<string> | null;
+    // public static GetPredefinedSetupNames(document: Document | null) : Array<string> | null;
 
     private _exportFontTable: ExportFontTable;
     //
@@ -152,20 +154,27 @@ export class BaseExportOptions {
     public GetExportLayerTable() : ExportLayerTable {
         return this._exportLayerTable;
     }
+
+    private _exportLinetypeTable: ExportLinetypeTable;
     //
     // Summary:
     //     Gets a copy of the line type table.
     //
     // Returns:
     //     The line type table.
-    public GetExportLinetypeTable() : ExportLinetypeTable;
+    public GetExportLinetypeTable() : ExportLinetypeTable {
+        return this._exportLinetypeTable;
+    }
+    private _exportPatternTable: ExportPatternTable;
     //
     // Summary:
     //     Gets a copy of the pattern table.
     //
     // Returns:
     //     The pattern table.
-    public GetExportPatternTable() : ExportPatternTable;
+    public GetExportPatternTable() : ExportPatternTable {
+        return this._exportPatternTable;
+    }
     //
     // Summary:
     //     Sets font table to option.
@@ -177,7 +186,9 @@ export class BaseExportOptions {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
-    public SetExportFontTable(fontTable: ExportFontTable | null) : void;
+    public SetExportFontTable(fontTable: ExportFontTable | null) : void {
+        this._exportFontTable = fontTable;
+    }
     //
     // Summary:
     //     Sets layer table back to option
@@ -189,7 +200,9 @@ export class BaseExportOptions {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
-    public SetExportLayerTable(layerTable: ExportLayerTable | null) : void;
+    public SetExportLayerTable(layerTable: ExportLayerTable | null) : void {
+        this._exportLayerTable = layerTable;
+    }
     //
     // Summary:
     //     Sets the line type table to use during export.
@@ -201,7 +214,9 @@ export class BaseExportOptions {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
-    public SetExportLinetypeTable(linetypeTable: ExportLinetypeTable | null) : void;
+    public SetExportLinetypeTable(linetypeTable: ExportLinetypeTable | null) : void {
+        this._exportLinetypeTable = linetypeTable;
+    }
     //
     // Summary:
     //     Sets the pattern table to use during export.
@@ -213,5 +228,7 @@ export class BaseExportOptions {
     // Exceptions:
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
-    public SetExportPatternTable(patternTable: ExportPatternTable | null) : void;
+    public SetExportPatternTable(patternTable: ExportPatternTable | null) : void {
+        this._exportPatternTable = patternTable;
+    }
 }
