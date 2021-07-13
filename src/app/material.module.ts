@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
+import { TreetableModule } from '@vaseap/ng-material-treetable';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    TreetableModule,
     MatExpansionModule,
     HttpClientModule
   ]

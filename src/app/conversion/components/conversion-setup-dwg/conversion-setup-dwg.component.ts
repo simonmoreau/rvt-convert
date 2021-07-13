@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ExportColorMode, PropOverrideMode } from '../../classes/base-export-options.class';
 import { ACADExportOptions, Color, ExportUnit, LineScaling, SolidGeometry, TextTreatment } from '../../classes/dwg-export-options.class';
+import LayerTable from '../../../../assets/files/layerTable.json';
+import { ExportLayerInfo, ExportLayerKey, ExportLayerTable } from '../../classes/export-layer-table.class';
 
 @Component({
   selector: 'app-conversion-setup-dwg',
@@ -16,6 +18,8 @@ export class ConversionSetupDwgComponent implements OnInit {
   textTreatmentAttributes: TextTreatmentAttribute[] = TextTreatmentAttribute.TextTreatmentAttributes;
   propOverridesAttributes: PropOverridesAttribute[] = PropOverridesAttribute.PropOverridesAttributes;
   lineScalingAttributes: LineScalingAttribute[] = LineScalingAttribute.LineScalingAttributes;
+
+  exportLayerTable: ExportLayerTable = new ExportLayerTable();
   
   constructor() { 
   }
@@ -23,6 +27,11 @@ export class ConversionSetupDwgComponent implements OnInit {
   ngOnInit(): void {
     this.dwgExportConfiguration = new ACADExportOptions();
     // this.dwgExportConfiguration.LineScaling = LineScaling.ModelSpace
+
+    LayerTable.forEach(layerTableElement => {
+      this.exportLayerTable.Add(layerTableElement.Key,layerTableElement.Value as ExportLayerInfo);
+      
+    });
   }
 
 }

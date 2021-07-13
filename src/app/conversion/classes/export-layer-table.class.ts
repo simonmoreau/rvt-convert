@@ -457,7 +457,6 @@ export class ExportLayerInfo {
 //     into the table using the same key.
 /*[DefaultMember("Item")]*/ 
 export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
-    private _exportLayerTable: Map<ExportLayerKey, ExportLayerInfo>;
 
     //
     // Summary:
@@ -515,13 +514,15 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
     public Add(exportLayerKey: ExportLayerKey | null, exportLayerInfo: ExportLayerInfo | null) : void {
-        this._exportLayerTable.set(exportLayerKey,exportLayerInfo);
+        this.set(exportLayerKey,exportLayerInfo);
+        this.Count = this.size;
     }
     //
     // Summary:
     //     Removes all contents stored in the table.
     public Clear() : void {
-        this._exportLayerTable.clear();
+        this.clear();
+        this.Count = this.size;
     }
     //
     // Summary:
@@ -538,7 +539,7 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
     public ContainsKey(exportlayerKey: ExportLayerKey | null) : boolean {
-        return this._exportLayerTable.has(exportlayerKey);
+        return this.has(exportlayerKey);
     }
     //
     // Summary:
@@ -558,7 +559,7 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
     public GetExportLayerInfo(exportLayerKey: ExportLayerKey | null) : ExportLayerInfo {
-        return this._exportLayerTable.get(exportLayerKey);
+        return this.get(exportLayerKey);
     }
     //
     // Summary:
@@ -567,7 +568,7 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     // Returns:
     //     Return the key array.
     public GetKeys() : ExportLayerKey[] | null {
-        return Array.from(this._exportLayerTable.keys());
+        return Array.from(this.keys());
     }
     //
     // Summary:
@@ -576,7 +577,7 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     // Returns:
     //     Return the info array.
     public GetValues() : ExportLayerInfo[] | null {
-        return Array.from(this._exportLayerTable.values());
+        return Array.from(this.values());
     }
     //
     // Summary:
@@ -590,6 +591,7 @@ export class ExportLayerTable extends Map<ExportLayerKey, ExportLayerInfo> {
     //   T:Autodesk.Revit.Exceptions.ArgumentNullException:
     //     A non-optional argument was null
     public Remove(exportLayerKey: ExportLayerKey | null) : void {
-        this._exportLayerTable.delete(exportLayerKey);
+        this.delete(exportLayerKey);
+        this.Count = this.size;
     }
 }
