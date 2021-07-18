@@ -14,6 +14,7 @@ import { ConversionSetupDwgComponent } from './components/conversion-setup-dwg/c
 import { ConversionSetupIfcComponent } from './components/conversion-setup-ifc/conversion-setup-ifc.component';
 import { ConversionViewListComponent } from './components/conversion-view-list/conversion-view-list.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
+import { ConversionSetupLayerTableComponent } from './components/conversion-setup-layer-table/conversion-setup-layer-table.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
     ConversionSetupDwgComponent,
     ConversionSetupIfcComponent,
     ConversionViewListComponent,
-    EnumToArrayPipe
+    EnumToArrayPipe,
+    ConversionSetupLayerTableComponent
   ],
   imports: [
     CommonModule,
