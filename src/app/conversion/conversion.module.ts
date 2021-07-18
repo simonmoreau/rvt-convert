@@ -16,7 +16,6 @@ import { ConversionViewListComponent } from './components/conversion-view-list/c
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { ConversionSetupLayerTableComponent } from './components/conversion-setup-layer-table/conversion-setup-layer-table.component';
 
-
 @NgModule({
   declarations: [
     ConversionComponent,
