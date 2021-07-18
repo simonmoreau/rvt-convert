@@ -1,18 +1,50 @@
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-    <!-- This is the tree node template for leaf nodes -->
-    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-      <!-- use a disabled button to provide padding for tree leaf -->
-      <button mat-icon-button disabled></button>
-      {{node.name}}
-    </mat-tree-node>
-    <!-- This is the tree node template for expandable nodes -->
-    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-      <button mat-icon-button matTreeNodeToggle
-              [attr.aria-label]="'Toggle ' + node.name">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>
+      <span [style.paddingLeft.px]="40"> Name </span>
+    </th>
+    <td mat-cell *matCellDef="let data">
+      <button mat-icon-button [style.visibility]="!data.expandable ? 'hidden' : ''"
+        [style.marginLeft.px]="data.level * 32" (click)="treeControl.toggle(data)">
         <mat-icon class="mat-icon-rtl-mirror">
-          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          {{treeControl.isExpanded(data) ? 'expand_more' : 'chevron_right'}}
         </mat-icon>
       </button>
-      {{node.name}}
-    </mat-tree-node>
-  </mat-tree>
+
+      {{data.name}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="LayerName">
+    <th mat-header-cell *matHeaderCellDef> LayerName </th>
+    <td mat-cell *matCellDef="let data"> {{data.LayerName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ColorNumber">
+    <th mat-header-cell *matHeaderCellDef> ColorNumber </th>
+    <td mat-cell *matCellDef="let data"> {{data.ColorNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Modifier">
+    <th mat-header-cell *matHeaderCellDef> Modifier </th>
+    <td mat-cell *matCellDef="let data"> {{data.Modifier}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="CutLayerName">
+    <th mat-header-cell *matHeaderCellDef> CutLayerName </th>
+    <td mat-cell *matCellDef="let data"> {{data.CutLayerName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="CutColorNumber">
+    <th mat-header-cell *matHeaderCellDef> CutColorNumber </th>
+    <td mat-cell *matCellDef="let data"> {{data.CutColorNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="CutModifier">
+    <th mat-header-cell *matHeaderCellDef> CutModifier </th>
+    <td mat-cell *matCellDef="let data"> {{data.CutModifier}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

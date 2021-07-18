@@ -10,36 +10,14 @@ import { ExportLayerInfo, ExportLayerKey, ExportLayerTable, LayerCategoryType } 
  */
  interface LayerMappingNode {
   name: string;
+  LayerName: string;
+  ColorNumber: number;
+  Modifier: string;
+  CutLayerName: string;
+  CutColorNumber: number;
+  CutModifier: string;
   children?: LayerMappingNode[];
 }
-
-const TREE_DATA: LayerMappingNode[] = [
-  {
-    name: 'Fruit',
-    children: [
-      {name: 'Apple'},
-      {name: 'Banana'},
-      {name: 'Fruit loops'},
-    ]
-  }, {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [
-          {name: 'Broccoli'},
-          {name: 'Brussels sprouts'},
-        ]
-      }, {
-        name: 'Orange',
-        children: [
-          {name: 'Pumpkins'},
-          {name: 'Carrots'},
-        ]
-      },
-    ]
-  },
-];
 
 /** Flat node with expandable and level information */
 interface LayerMappingFlatNode {
@@ -65,14 +43,23 @@ interface LayerMapping {
 })
 export class ConversionSetupLayerTableComponent implements OnInit {
 
+  displayedColumns: string[] = ['name', 'LayerName', 'ColorNumber', 'Modifier', 'CutLayerName', 'CutColorNumber', 'CutModifier'];
+
   @Input() public layerTable: ExportLayerTable;
   // ngOnInit(): void {
   // }
 
+  
   private _transformer = (node: LayerMappingNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
+      LayerName: node.LayerName,
+      ColorNumber: node.ColorNumber,
+      Modifier: node.Modifier,
+      CutLayerName: node.CutLayerName,
+      CutColorNumber: node.CutColorNumber,
+      CutModifier: node.CutModifier,
       level: level,
     };
   }
@@ -118,6 +105,12 @@ export class ConversionSetupLayerTableComponent implements OnInit {
 
         let currentLayerMappingNode: LayerMappingNode = {
           name: categoryLayerMapping.category,
+          LayerName: categoryLayerMapping.LayerName,
+          ColorNumber: categoryLayerMapping.ColorNumber,
+          Modifier: categoryLayerMapping.Modifier,
+          CutLayerName: categoryLayerMapping.CutLayerName,
+          CutColorNumber: categoryLayerMapping.CutColorNumber,
+          CutModifier: categoryLayerMapping.CutModifier,
           children: [],
         }
 
@@ -137,6 +130,12 @@ export class ConversionSetupLayerTableComponent implements OnInit {
 
     const undefinedLayerMappingNode: LayerMappingNode = {
       name: undefinedLayerMapping.category,
+      LayerName: undefinedLayerMapping.LayerName,
+      ColorNumber: undefinedLayerMapping.ColorNumber,
+      Modifier: undefinedLayerMapping.Modifier,
+      CutLayerName: undefinedLayerMapping.CutLayerName,
+      CutColorNumber: undefinedLayerMapping.CutColorNumber,
+      CutModifier: undefinedLayerMapping.CutModifier,
       children: [],
     }
 
@@ -170,6 +169,12 @@ export class ConversionSetupLayerTableComponent implements OnInit {
 
         let currentLayerMappingNode: LayerMappingNode = {
           name: currentLayerMapping.category,
+          LayerName: currentLayerMapping.LayerName,
+          ColorNumber: currentLayerMapping.ColorNumber,
+          Modifier: currentLayerMapping.Modifier,
+          CutLayerName: currentLayerMapping.CutLayerName,
+          CutColorNumber: currentLayerMapping.CutColorNumber,
+          CutModifier: currentLayerMapping.CutModifier,
           children: [],
         }
 
@@ -216,6 +221,12 @@ export class ConversionSetupLayerTableComponent implements OnInit {
 
             let currentLayerMappingNode: LayerMappingNode = {
               name: currentLayerMapping.category,
+              LayerName: currentLayerMapping.LayerName,
+              ColorNumber: currentLayerMapping.ColorNumber,
+              Modifier: currentLayerMapping.Modifier,
+              CutLayerName: currentLayerMapping.CutLayerName,
+              CutColorNumber: currentLayerMapping.CutColorNumber,
+              CutModifier: currentLayerMapping.CutModifier,
               children: [],
             }
             filteredChildren[0].children.push(currentLayerMappingNode);
