@@ -1,6 +1,6 @@
 <mat-checkbox class="margin" [(ngModel)]="export">Export to DWG</mat-checkbox>
 <mat-tab-group animationDuration="0ms" [ngClass]="{'disabled': !export}">
-    <mat-tab label="Layers">
+    <mat-tab label="Layers" class="configuration-tab">
         <div fxLayout="column" class="configuration-tab">
             <mat-form-field class="view-type-select">
                 <mat-label>Export layer options:</mat-label>
@@ -14,7 +14,7 @@
             <app-conversion-setup-layer-table [layerTable]=exportLayerTable></app-conversion-setup-layer-table>
         </div>
     </mat-tab>
-    <mat-tab label="Lines">
+    <mat-tab label="Lines" class="configuration-tab">
         <div fxLayout="column" class="configuration-tab">
             <mat-form-field class="view-type-select">
                 <mat-label>Set linetype scale:</mat-label>
@@ -27,12 +27,12 @@
             </mat-form-field>
         </div>
     </mat-tab>
-    <mat-tab label="Patterns">
+    <mat-tab label="Patterns" class="configuration-tab">
         <div fxLayout="column" class="configuration-tab">
 
         </div>
     </mat-tab>
-    <mat-tab label="Text & Fonts">
+    <mat-tab label="Text & Fonts" class="configuration-tab">
         <div fxLayout="column" class="configuration-tab">
             <mat-form-field class="view-type-select">
                 <mat-label>Text behavior when exported:</mat-label>
@@ -45,7 +45,7 @@
             </mat-form-field>
         </div>
     </mat-tab>
-    <mat-tab label="Colors">
+    <mat-tab label="Colors" class="configuration-tab">
         <div fxLayout="column" class="configuration-tab">
             <label id="colors-radio-group-label">Export colors as:</label>
             <mat-radio-group aria-labelledby="colors-radio-group-label" class="radio-group"
@@ -58,7 +58,7 @@
             </mat-radio-group>
         </div>
     </mat-tab>
-    <mat-tab label="Solids">
+    <mat-tab label="Solids" class="configuration-tab">
         <div fxLayout="column" class="configuration-tab">
             <label id="solids-radio-group-label">Export solids as:</label>
             <mat-radio-group aria-labelledby="solids-radio-group-label" class="radio-group"
@@ -68,7 +68,7 @@
             </mat-radio-group>
         </div>
     </mat-tab>
-    <mat-tab label="Units & Coordinates">
+    <mat-tab label="Units & Coordinates" class="configuration-tab">
         <div fxLayout="column" class="configuration-tab">
             <label id="unit-radio-group-label">One DWG unit is:</label>
             <mat-radio-group aria-labelledby="unit-radio-group-label" class="radio-group"
