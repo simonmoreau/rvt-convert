@@ -1,0 +1,8 @@
+<mat-checkbox class="margin" [(ngModel)]="export">Export to PDF</mat-checkbox>
+<mat-tab-group animationDuration="0ms" [ngClass]="{'disabled': !export}">
+  <mat-tab label="General">
+    <div fxLayout="column" class="configuration-tab">
+        Setup PDF export here
+    </div>
+  </mat-tab>
+</mat-tab-group>
