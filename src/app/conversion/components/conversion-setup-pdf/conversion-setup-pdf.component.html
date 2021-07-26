@@ -1,8 +1,72 @@
 <mat-checkbox class="margin" [(ngModel)]="export">Export to PDF</mat-checkbox>
 <mat-tab-group animationDuration="0ms" [ngClass]="{'disabled': !export}">
-  <mat-tab label="General">
+  <mat-tab label="Size">
     <div fxLayout="column" class="configuration-tab">
         Setup PDF export here
+    </div>
+  </mat-tab>
+  <mat-tab label="Paper Placement">
+    <div fxLayout="column" class="configuration-tab">
+      <mat-radio-group aria-labelledby="placement-radio-group-label" class="radio-group" [(ngModel)]="pdfExportConfiguration.PaperPlacement">
+        <mat-radio-button class="radio-button" [value]=0>Center</mat-radio-button>
+        <mat-radio-button class="radio-button" [value]=1>Offset from corner</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field class="view-type-select">
+      <mat-label>Raster Quality:</mat-label>
+      <mat-select [disabled]="!pdfExportConfiguration.PaperPlacement">
+        <mat-option value="no-margin" selected>No Margin</mat-option>
+        <mat-option value="user-defined">User Defined</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+  </mat-tab>
+  <mat-tab label="Orientation">
+    <div fxLayout="column" class="configuration-tab">
+      <mat-radio-group aria-labelledby="orientation-radio-group-label" class="radio-group" [(ngModel)]="pdfExportConfiguration.PaperOrientation">
+      <mat-radio-button class="radio-button" [value]=2>Automatic</mat-radio-button>
+      <mat-radio-button class="radio-button" [value]=0>Portrait</mat-radio-button>
+      <mat-radio-button class="radio-button" [value]=1>Landscape</mat-radio-button>
+  </mat-radio-group>
+    </div>
+  </mat-tab>
+  <mat-tab label="Appearance">
+    <div fxLayout="column" class="configuration-tab">
+      <mat-form-field class="view-type-select">
+        <mat-label>Raster Quality:</mat-label>
+        <mat-select [(ngModel)]="pdfExportConfiguration.RasterQuality">
+          <mat-option *ngFor="let rasterQualityTypeAttribute of rasterQualityTypeAttributes" [value]="rasterQualityTypeAttribute.value">
+            {{rasterQualityTypeAttribute.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="view-type-select">
+        <mat-label>Colors:</mat-label>
+        <mat-select [(ngModel)]="pdfExportConfiguration.ColorDepth">
+          <mat-option *ngFor="let colorDepthTypeAttribute of colorDepthTypeAttributes" [value]="colorDepthTypeAttribute.value">
+            {{colorDepthTypeAttribute.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-tab>
+  <mat-tab label="Create Output Using">
+    <div fxLayout="column" class="configuration-tab">
+      <mat-radio-group aria-labelledby="output-radio-group-label" class="radio-group"
+          [(ngModel)]="pdfExportConfiguration.AlwaysUseRaster">
+          <mat-radio-button class="radio-button" [value]=false>Vector Processing</mat-radio-button>
+          <mat-radio-button class="radio-button" [value]=true>Raster Processing</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </mat-tab>
+  <mat-tab label="Options">
+    <div fxLayout="column" class="configuration-tab">
+      <mat-checkbox class="checkbox" [(ngModel)]="pdfExportConfiguration.ViewLinksInBlue">View links in blue (Color prints only)</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="pdfExportConfiguration.HideReferencePlane">Hide ref/work planes</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="pdfExportConfiguration.HideUnreferencedViewTags">Hide unreferenced view tags</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="pdfExportConfiguration.MaskCoincidentLines">Region edges mask coincident lines</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="pdfExportConfiguration.HideScopeBoxes">Hide scope boxes</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="pdfExportConfiguration.HideCropBoundaries">Hide crop boundaries</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="pdfExportConfiguration.ReplaceHalftoneWithThinLines">Replace halftone with thin lines</mat-checkbox>
     </div>
   </mat-tab>
 </mat-tab-group>

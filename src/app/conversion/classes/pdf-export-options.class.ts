@@ -193,8 +193,8 @@ export class PDFExportOptions {
     //
     // Summary:
     //     Creates a default options object.
-    constructor(){
-        
+    constructor() {
+
     }
     //
     // Summary:
@@ -206,7 +206,7 @@ export class PDFExportOptions {
     //
     // Remarks:
     //     When the PaperFormat is ExportPaperFormat.Default, which means "Use Sheet Size".
-    public PaperFormat: ExportPaperFormat;
+    public PaperFormat: ExportPaperFormat = ExportPaperFormat.Default;
     //
     // Summary:
     //     If true completely use raster processing for graphics, otherwise use vector processing
@@ -223,7 +223,7 @@ export class PDFExportOptions {
     //
     // Remarks:
     //     This property would be ignored if the PaperFormat is Default.
-    public ZoomType: ZoomType;
+    public ZoomType: ZoomType = ZoomType.FitToPage;
     //
     // Summary:
     //     Percentage of the zoom for the view.
@@ -239,7 +239,7 @@ export class PDFExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public RasterQuality: RasterQualityType;
+    public RasterQuality: RasterQualityType = RasterQualityType.High;
     //
     // Summary:
     //     The preferred export quality (DPI).
@@ -252,7 +252,7 @@ export class PDFExportOptions {
     // Remarks:
     //     This quality setting is the equivalent of printer resolution found in advanced
     //     printer settings. An effect of the setting is to control tessellation quality.
-    public ExportQuality: PDFExportQualityType;
+    public ExportQuality: PDFExportQualityType = PDFExportQualityType.DPI600;
     //
     // Summary:
     //     Color depth of either black/white, gray scale or color.
@@ -261,7 +261,7 @@ export class PDFExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public ColorDepth: ColorDepthType;
+    public ColorDepth: ColorDepthType = ColorDepthType.Color;
     //
     // Summary:
     //     Paper placement of either center or offset from corner.
@@ -270,7 +270,7 @@ export class PDFExportOptions {
     //   T:Autodesk.Revit.Exceptions.ArgumentOutOfRangeException:
     //     When setting this property: A value passed for an enumeration argument is not
     //     a member of that enumeration
-    public PaperPlacement: PaperPlacementType;
+    public PaperPlacement: PaperPlacementType = PaperPlacementType.Center;
     //
     // Summary:
     //     Offset between left sides of pdf content and paper. Always stored in unit of
@@ -296,7 +296,7 @@ export class PDFExportOptions {
     //
     // Summary:
     //     Whether to hide reference/work planes.
-    public HideReferencePlane: boolean = false;
+    public HideReferencePlane: boolean = true;
     //
     // Summary:
     //     Whether to hide unreferenced view tags.
@@ -351,7 +351,7 @@ export class PDFExportOptions {
     // Remarks:
     //     Ignored when the PaperFormat is ExportPaperFormat.Default, which means "Use Sheet
     //     Size".
-    public PaperOrientation: PageOrientationType;
+    public PaperOrientation: PageOrientationType = PageOrientationType.Auto;
     //
     // Summary:
     //     File name of the PDF when Autodesk.Revit.DB.PDFExportOptions.Combine is true.
