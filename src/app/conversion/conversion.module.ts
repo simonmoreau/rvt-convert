@@ -16,6 +16,7 @@ import { ConversionViewListComponent } from './components/conversion-view-list/c
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { ConversionSetupLayerTableComponent } from './components/conversion-setup-layer-table/conversion-setup-layer-table.component';
 import { ConversionSetupPdfComponent } from './components/conversion-setup-pdf/conversion-setup-pdf.component';
+import { ConversionSetupPatternTableComponent } from './components/conversion-setup-pattern-table/conversion-setup-pattern-table.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ConversionSetupPdfComponent } from './components/conversion-setup-pdf/c
     ConversionViewListComponent,
     EnumToArrayPipe,
     ConversionSetupLayerTableComponent,
-    ConversionSetupPdfComponent
+    ConversionSetupPdfComponent,
+    ConversionSetupPatternTableComponent
   ],
   imports: [
     CommonModule,

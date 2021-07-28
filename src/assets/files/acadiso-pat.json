@@ -1,0 +1,251 @@
+[
+    {
+        "name": "SOLID"
+    },
+    {
+        "name": "ANGLE"
+    },
+    {
+        "name": "ANSI31"
+    },
+    {
+        "name": "ANSI32"
+    },
+    {
+        "name": "ANSI33"
+    },
+    {
+        "name": "ANSI34"
+    },
+    {
+        "name": "ANSI35"
+    },
+    {
+        "name": "ANSI36"
+    },
+    {
+        "name": "ANSI37"
+    },
+    {
+        "name": "ANSI38"
+    },
+    {
+        "name": "AR-B816"
+    },
+    {
+        "name": "AR-B816C"
+    },
+    {
+        "name": "AR-B88"
+    },
+    {
+        "name": "AR-BRELM"
+    },
+    {
+        "name": "AR-BRSTD"
+    },
+    {
+        "name": "AR-CONC"
+    },
+    {
+        "name": "AR-HBONE"
+    },
+    {
+        "name": "AR-PARQ1"
+    },
+    {
+        "name": "AR-RROOF"
+    },
+    {
+        "name": "AR-RSHKE"
+    },
+    {
+        "name": "AR-SAND"
+    },
+    {
+        "name": "BOX"
+    },
+    {
+        "name": "BRASS"
+    },
+    {
+        "name": "BRICK"
+    },
+    {
+        "name": "BRSTONE"
+    },
+    {
+        "name": "CLAY"
+    },
+    {
+        "name": "CORK"
+    },
+    {
+        "name": "CROSS"
+    },
+    {
+        "name": "DASH"
+    },
+    {
+        "name": "DOLMIT"
+    },
+    {
+        "name": "DOTS"
+    },
+    {
+        "name": "EARTH"
+    },
+    {
+        "name": "ESCHER"
+    },
+    {
+        "name": "FLEX"
+    },
+    {
+        "name": "GOST_GLASS"
+    },
+    {
+        "name": "GOST_WOOD"
+    },
+    {
+        "name": "GOST_GROUND"
+    },
+    {
+        "name": "GRASS"
+    },
+    {
+        "name": "GRATE"
+    },
+    {
+        "name": "GRAVEL"
+    },
+    {
+        "name": "HEX"
+    },
+    {
+        "name": "HONEY"
+    },
+    {
+        "name": "HOUND"
+    },
+    {
+        "name": "INSUL"
+    },
+    {
+        "name": "ACAD_ISO02W100"
+    },
+    {
+        "name": "ACAD_ISO03W100"
+    },
+    {
+        "name": "ACAD_ISO04W100"
+    },
+    {
+        "name": "ACAD_ISO05W100"
+    },
+    {
+        "name": "ACAD_ISO06W100"
+    },
+    {
+        "name": "ACAD_ISO07W100"
+    },
+    {
+        "name": "ACAD_ISO08W100"
+    },
+    {
+        "name": "ACAD_ISO09W100"
+    },
+    {
+        "name": "ACAD_ISO10W100"
+    },
+    {
+        "name": "ACAD_ISO11W100"
+    },
+    {
+        "name": "ACAD_ISO12W100"
+    },
+    {
+        "name": "ACAD_ISO13W100"
+    },
+    {
+        "name": "ACAD_ISO14W100"
+    },
+    {
+        "name": "ACAD_ISO15W100"
+    },
+    {
+        "name": "JIS_LC_20"
+    },
+    {
+        "name": "JIS_LC_20A"
+    },
+    {
+        "name": "JIS_LC_8"
+    },
+    {
+        "name": "JIS_LC_8A"
+    },
+    {
+        "name": "JIS_RC_10"
+    },
+    {
+        "name": "JIS_RC_15"
+    },
+    {
+        "name": "JIS_RC_18"
+    },
+    {
+        "name": "JIS_RC_30"
+    },
+    {
+        "name": "JIS_STN_1E"
+    },
+    {
+        "name": "JIS_STN_2.5"
+    },
+    {
+        "name": "JIS_WOOD"
+    },
+    {
+        "name": "LINE"
+    },
+    {
+        "name": "MUDST"
+    },
+    {
+        "name": "NET"
+    },
+    {
+        "name": "NET3"
+    },
+    {
+        "name": "PLAST"
+    },
+    {
+        "name": "PLASTI"
+    },
+    {
+        "name": "SACNCR"
+    },
+    {
+        "name": "SQUARE"
+    },
+    {
+        "name": "STARS"
+    },
+    {
+        "name": "STEEL"
+    },
+    {
+        "name": "SWAMP"
+    },
+    {
+        "name": "TRANS"
+    },
+    {
+        "name": "TRIANG"
+    },
+    {
+        "name": "ZIGZAG"
+    }
+]

@@ -18,7 +18,7 @@ export class ConversionSetupPatternTableComponent implements OnInit, AfterViewIn
 
   
   displayedColumns: string[] = ['name', 'target', 'acad'];
-  acadPatterns: AcadIsoPat[] = AcadIsoPatFile;
+  acadPatterns: AcadIsoPat[];
 
   dataSource: MatTableDataSource<FillPattern> = new MatTableDataSource();
 
@@ -27,6 +27,7 @@ export class ConversionSetupPatternTableComponent implements OnInit, AfterViewIn
    }
 
   ngOnInit(): void {
+    this.acadPatterns = AcadIsoPatFile.slice(0,10);
     this.dataSource.data = this.patternTable;
     this.dataSource.paginator = this.paginator;
   }

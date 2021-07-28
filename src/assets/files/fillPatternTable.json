@@ -1,0 +1,314 @@
+[
+    {
+        "Name": "<Remplissage de solide>",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "50 mm Horizontal",
+        "Target": "Model"
+    },
+    {
+        "Name": "50 mm Vertical",
+        "Target": "Model"
+    },
+    {
+        "Name": "600 x 1200mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "600 x 600mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Acier",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Aluminium",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Assise de briques en palissade",
+        "Target": "Model"
+    },
+    {
+        "Name": "Béton",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Béton - Armé",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Béton - Béton armé",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Bloc 225 x 225",
+        "Target": "Model"
+    },
+    {
+        "Name": "Bloc 225 x 450",
+        "Target": "Model"
+    },
+    {
+        "Name": "Bois - Finition",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Bois - Planches 100x800 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Brique 75 x 225",
+        "Target": "Model"
+    },
+    {
+        "Name": "Carrés 100 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Carrés 150 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Carrés 150 x 150 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Carrés 200 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Carrés 250 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Carrés 50 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Chevrons 100 x 200",
+        "Target": "Model"
+    },
+    {
+        "Name": "Diagonale bas",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Diagonale bas 1.5 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Diagonale bas 3 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Diagonale haut",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Diagonale haut 1.5 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Diagonale haut 3 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Général - Gravier",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Général - Horizontal",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Général - Terre",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Général - Vertical",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Gypse - Plâtre",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Hachures croisées",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Hachures croisées - En diagonale",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Hachures croisées 1.5 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Hachures croisées 3 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Hachures croisées en diagonale",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Hachures croisées en diagonale 1.5 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Hachures croisées en diagonale 10 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Hachures croisées en diagonale 3 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Horizontal",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Horizontal - 100 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Horizontal 1.5 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Horizontal 100 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Horizontal 150 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Horizontal 3 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Horizontal 50 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Horizontal 75 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Isolant - Rigide",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Isolation thermique - Dure",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Isolation thermique - Souple",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Maçonnerie - Brique",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Maçonnerie - Brique silico-calcaire",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Maçonnerie - Pavé de béton",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Maçonnerie de briques",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Maçonnerie exposée - Panneresse 1",
+        "Target": "Model"
+    },
+    {
+        "Name": "Mur-rideau - Panneaux",
+        "Target": "Model"
+    },
+    {
+        "Name": "Parquet 152 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Plastique",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Raster - 1000x1000 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Raster - 150x150 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Raster - 190x190 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Raster - 250x250 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Raster - 600x600 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Règle",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Sable",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Sable - Dense",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Terre",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Triangles",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Verre - Coupe du verre",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Vertical",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Vertical - 200 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Vertical - 500 mm",
+        "Target": "Model"
+    },
+    {
+        "Name": "Vertical 1.5 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Vertical 3 mm",
+        "Target": "Drafting"
+    },
+    {
+        "Name": "Vertical 75 mm",
+        "Target": "Model"
+    }
+]
