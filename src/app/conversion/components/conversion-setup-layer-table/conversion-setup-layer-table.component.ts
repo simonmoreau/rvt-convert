@@ -46,9 +46,6 @@ export class ConversionSetupLayerTableComponent implements OnInit {
   displayedColumns: string[] = ['name', 'LayerName', 'ColorNumber', 'Modifier', 'CutLayerName', 'CutColorNumber', 'CutModifier'];
 
   @Input() public layerTable: ExportLayerTable;
-  // ngOnInit(): void {
-  // }
-
   
   private _transformer = (node: LayerMappingNode, level: number) => {
     return {
@@ -81,6 +78,10 @@ export class ConversionSetupLayerTableComponent implements OnInit {
     treeData = this.AddCategoryNodes(treeData);
     this.dataSource.data = treeData;
   }
+
+  // onSearchChange(searchValue: string): void {  
+  //   this.dataSource.data = this.dataSource.data;
+  // }
 
   hasChild = (_: number, node: LayerMappingFlatNode) => node.expandable;
 
@@ -157,13 +158,16 @@ export class ConversionSetupLayerTableComponent implements OnInit {
         subcategoriesLayerMappings.push(key);
       }
       else {
+        let cutColorNumber = null;
+        if (value.CutLayerName) { cutColorNumber = value.CutColorNumber;}
+
         currentLayerMapping = {
           category: key.CategoryName,
           LayerName: value.LayerName,
           ColorNumber: value.ColorNumber,
           Modifier: "",
           CutLayerName: value.CutLayerName,
-          CutColorNumber: value.CutColorNumber,
+          CutColorNumber: cutColorNumber,
           CutModifier: ""
         };
 
@@ -208,14 +212,16 @@ export class ConversionSetupLayerTableComponent implements OnInit {
           const filteredChildren: LayerMappingNode[] = groupLayerMappingNodes.children.filter(x => x.name == subcategoriesLayerMappingKey.CategoryName);
           if (filteredChildren.length != 0)
           {
-            
+            let cutColorNumber = null;
+            if (this.layerTable.get(subcategoriesLayerMappingKey).CutLayerName) { cutColorNumber = this.layerTable.get(subcategoriesLayerMappingKey).CutColorNumber;}
+
             currentLayerMapping = {
               category: subcategoriesLayerMappingKey.SubCategoryName,
               LayerName: this.layerTable.get(subcategoriesLayerMappingKey).LayerName,
               ColorNumber: this.layerTable.get(subcategoriesLayerMappingKey).ColorNumber,
               Modifier: "",
               CutLayerName: this.layerTable.get(subcategoriesLayerMappingKey).CutLayerName,
-              CutColorNumber: this.layerTable.get(subcategoriesLayerMappingKey).CutColorNumber,
+              CutColorNumber: cutColorNumber,
               CutModifier: ""
             };
 

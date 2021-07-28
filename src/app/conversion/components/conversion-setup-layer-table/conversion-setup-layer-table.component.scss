@@ -6,3 +6,8 @@ table.mat-table {
     height: 19rem;
     overflow: auto;
   }
+
+  .disabled{
+    pointer-events: none;
+    background-color: lightgrey;
+}
