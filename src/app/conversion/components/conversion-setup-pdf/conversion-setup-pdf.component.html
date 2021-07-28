@@ -2,7 +2,25 @@
 <mat-tab-group animationDuration="0ms" [ngClass]="{'disabled': !export}">
   <mat-tab label="Size">
     <div fxLayout="column" class="configuration-tab">
-        Setup PDF export here
+      <mat-form-field class="view-type-select">
+        <mat-label>Size:</mat-label>
+        <mat-select [(ngModel)]="pdfExportConfiguration.PaperFormat">
+          <mat-option *ngFor="let exportPaperFormatAttribute of exportPaperFormatAttributes" [value]="exportPaperFormatAttribute.value">
+            {{exportPaperFormatAttribute.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-radio-group aria-labelledby="placement-radio-group-label" class="radio-group" [(ngModel)]="pdfExportConfiguration.ZoomType">
+        <mat-radio-button class="radio-button" [value]=0>Fit to page</mat-radio-button>
+        <mat-radio-button class="radio-button" [value]=1>Zoom</mat-radio-button>
+    </mat-radio-group>
+    <div class="offset-container">
+      <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>Zoom:</mat-label>
+        <input matInput type="number" class="right-align" placeholder="0" [(ngModel)]="pdfExportConfiguration.ZoomPercentage" [disabled]="!pdfExportConfiguration.ZoomType">
+        <span matSuffix> %</span>
+      </mat-form-field>
+    </div>
     </div>
   </mat-tab>
   <mat-tab label="Paper Placement">
@@ -12,12 +30,24 @@
         <mat-radio-button class="radio-button" [value]=1>Offset from corner</mat-radio-button>
     </mat-radio-group>
     <mat-form-field class="view-type-select">
-      <mat-label>Raster Quality:</mat-label>
-      <mat-select [disabled]="!pdfExportConfiguration.PaperPlacement">
-        <mat-option value="no-margin" selected>No Margin</mat-option>
-        <mat-option value="user-defined">User Defined</mat-option>
+      <mat-label>Offset Reference:</mat-label>
+      <mat-select [disabled]="!pdfExportConfiguration.PaperPlacement" [(ngModel)]="paperPlacementOffset">
+        <mat-option [value]=true>No Margin</mat-option>
+        <mat-option [value]=false>User Defined</mat-option>
       </mat-select>
     </mat-form-field>
+    <div class="offset-container">   
+      <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>X:</mat-label>
+        <input matInput type="number" class="right-align" placeholder="0" [(ngModel)]="pdfExportConfiguration.OriginOffsetX" [disabled]="paperPlacementOffset">
+        <span matSuffix> mm</span>
+      </mat-form-field>
+      <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>Y:</mat-label>
+        <input matInput type="number" class="right-align" placeholder="0" [(ngModel)]="pdfExportConfiguration.OriginOffsetY" [disabled]="paperPlacementOffset">
+        <span matSuffix> mm</span>
+      </mat-form-field>
+    </div>
     </div>
   </mat-tab>
   <mat-tab label="Orientation">
@@ -44,6 +74,14 @@
         <mat-select [(ngModel)]="pdfExportConfiguration.ColorDepth">
           <mat-option *ngFor="let colorDepthTypeAttribute of colorDepthTypeAttributes" [value]="colorDepthTypeAttribute.value">
             {{colorDepthTypeAttribute.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="view-type-select">
+        <mat-label>Export Quality:</mat-label>
+        <mat-select [(ngModel)]="pdfExportConfiguration.ExportQuality">
+          <mat-option *ngFor="let PDFExportQualityTypeAttribute of PDFExportQualityTypeAttributes" [value]="PDFExportQualityTypeAttribute.value">
+            {{PDFExportQualityTypeAttribute.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>

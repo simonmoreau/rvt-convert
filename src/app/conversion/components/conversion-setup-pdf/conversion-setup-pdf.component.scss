@@ -23,3 +23,20 @@
   max-width: 30rem;
   margin-right: 1rem;
 }
+
+.offset-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.right-align {
+  text-align: right;
+}
+
+input.right-align::-webkit-outer-spin-button,
+input.right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.right-align {
+  -moz-appearance: textfield;
+}

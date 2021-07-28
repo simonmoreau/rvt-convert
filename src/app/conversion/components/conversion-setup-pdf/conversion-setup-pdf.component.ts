@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ColorDepthType, ExportPaperFormat, PDFExportOptions, RasterQualityType } from '../../classes/pdf-export-options.class';
+import { ColorDepthType, ExportPaperFormat, PDFExportOptions, PDFExportQualityType, RasterQualityType } from '../../classes/pdf-export-options.class';
 
 @Component({
   selector: 'app-conversion-setup-pdf',
@@ -14,6 +14,9 @@ export class ConversionSetupPdfComponent implements OnInit {
   exportPaperFormatAttributes: ExportPaperFormatAttribute[] = ExportPaperFormatAttribute.ExportPaperFormats;
   rasterQualityTypeAttributes: RasterQualityTypeAttribute[] = RasterQualityTypeAttribute.RasterQualityTypes;
   colorDepthTypeAttributes: ColorDepthTypeAttribute[] = ColorDepthTypeAttribute.ColorDepthTypeAttributes;
+  PDFExportQualityTypeAttributes: PDFExportQualityTypeAttribute[] = PDFExportQualityTypeAttribute.PDFExportQualityTypeAttributes;
+
+  paperPlacementOffset: boolean = true;
 
   constructor() {
     this.pdfExportConfiguration = new PDFExportOptions();
@@ -77,4 +80,20 @@ export class ColorDepthTypeAttribute {
   name: string;
   index: number;
   value: ColorDepthType;
+}
+
+export class PDFExportQualityTypeAttribute {
+  static PDFExportQualityTypeAttributes: PDFExportQualityTypeAttribute[] = [
+    {name:'DPI72',index:72,value:PDFExportQualityType.DPI72},
+    {name:'DPI144',index:144,value:PDFExportQualityType.DPI144},
+    {name:'DPI300',index:300,value:PDFExportQualityType.DPI300},
+    {name:'DPI600',index:600,value:PDFExportQualityType.DPI600},
+    {name:'DPI1200',index:1200,value:PDFExportQualityType.DPI1200},
+    {name:'DPI2400',index:2400,value:PDFExportQualityType.DPI2400},
+    {name:'DPI3600',index:3600,value:PDFExportQualityType.DPI3600},
+    {name:'DPI4000',index:4000,value:PDFExportQualityType.DPI4000},    
+  ];
+  name: string;
+  index: number;
+  value: PDFExportQualityType;
 }
