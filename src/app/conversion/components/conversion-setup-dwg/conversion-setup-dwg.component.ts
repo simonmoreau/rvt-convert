@@ -3,6 +3,8 @@ import { ExportColorMode, PropOverrideMode } from '../../classes/base-export-opt
 import { ACADExportOptions, Color, ExportUnit, LineScaling, SolidGeometry, TextTreatment } from '../../classes/dwg-export-options.class';
 import { ExportLayerInfo, ExportLayerKey, ExportLayerTable } from '../../classes/export-layer-table.class';
 import LayerTable from '../../../../assets/files/layerTable.json'
+import PatternTable from '../../../../assets/files/fillPatternTable.json'
+import { FillPattern } from '../conversion-setup-pattern-table/conversion-setup-pattern-table.component';
 
 @Component({
   selector: 'app-conversion-setup-dwg',
@@ -20,14 +22,18 @@ export class ConversionSetupDwgComponent implements OnInit {
   lineScalingAttributes: LineScalingAttribute[] = LineScalingAttribute.LineScalingAttributes;
 
   exportLayerTable: ExportLayerTable = new ExportLayerTable();
+  patternTable: FillPattern[] = [];
   
-  constructor() { 
+  constructor() {
     this.dwgExportConfiguration = new ACADExportOptions();
     // this.dwgExportConfiguration.LineScaling = LineScaling.ModelSpace
 
     LayerTable.forEach(layerTableElement => {
       this.exportLayerTable.Add(layerTableElement.Key,layerTableElement.Value as ExportLayerInfo);
-      
+    });
+
+    PatternTable.forEach(patternTableElement => {
+      this.patternTable.push( new FillPattern({Name:patternTableElement.Name, Target:patternTableElement.Target, DWG:""}),)
     });
   }
 
