@@ -29,17 +29,30 @@
     </mat-tab>
     <mat-tab label="Patterns" class="configuration-tab">
         <div fxLayout="column" class="configuration-tab">
-            <app-conversion-setup-pattern-table [patternTable]=patternTable></app-conversion-setup-pattern-table>
-            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-                <div>
-                    <mat-checkbox class="checkbox" [(ngModel)]="dwgExportConfiguration.UseHatchBackgroundColor">Add solid background</mat-checkbox>
+            <app-conversion-setup-pattern-table [patternTable]=patternTable [showModel]=showModel></app-conversion-setup-pattern-table>
+            <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="50px">
+
+                <mat-radio-group aria-labelledby="colors-radio-group-label" class="radio-group"
+                    [(ngModel)]=showModel>
+                    <mat-radio-button class="radio-button" [value]=false>Drafting</mat-radio-button>
+                    <mat-radio-button class="radio-button" [value]=true>Model</mat-radio-button>
+                </mat-radio-group>
+
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                    <div>
+                        <mat-checkbox class="checkbox" [(ngModel)]="dwgExportConfiguration.UseHatchBackgroundColor">Add
+                            solid background</mat-checkbox>
+                    </div>
+                    <mat-form-field [ngClass]="{'disabled': !dwgExportConfiguration.UseHatchBackgroundColor}"
+                        style="width: 100px;">
+                        <input matInput [ngxMatColorPicker]="picker" [formControl]="colorCtr">
+                        <ngx-mat-color-toggle matSuffix [for]="picker" [style.background-color]="colorPickerBackground"
+                            class="color-picker"></ngx-mat-color-toggle>
+                        <ngx-mat-color-picker #picker [touchUi]="touchUi" [color]="color"></ngx-mat-color-picker>
+                    </mat-form-field>
                 </div>
-                <mat-form-field [ngClass]="{'disabled': !dwgExportConfiguration.UseHatchBackgroundColor}" style="width: 100px;">
-                    <input matInput [ngxMatColorPicker]="picker" [formControl]="colorCtr" >
-                    <ngx-mat-color-toggle matSuffix [for]="picker" [style.background-color]="colorPickerBackground" class="color-picker"></ngx-mat-color-toggle>
-                    <ngx-mat-color-picker #picker [touchUi]="touchUi" [color]="color"></ngx-mat-color-picker>
-                </mat-form-field>
             </div>
+
         </div>
     </mat-tab>
     <mat-tab label="Text & Fonts" class="configuration-tab">
@@ -61,8 +74,8 @@
             <mat-radio-group aria-labelledby="colors-radio-group-label" class="radio-group"
                 [(ngModel)]="dwgExportConfiguration.Colors">
                 <mat-radio-button class="radio-button" [value]=0>Index color (255 colors)</mat-radio-button>
-                <mat-radio-button class="radio-button" [value]=1>Specified in object styles (True Color - RGB
-                    values)</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=1>Specified in object styles (True Color - RGB values)
+                </mat-radio-button>
                 <mat-radio-button class="radio-button" [value]=2>Specified in view (True Color - RGB values)
                 </mat-radio-button>
             </mat-radio-group>
@@ -83,7 +96,8 @@
             <label id="unit-radio-group-label">One DWG unit is:</label>
             <mat-radio-group aria-labelledby="unit-radio-group-label" class="radio-group"
                 [(ngModel)]="dwgExportConfiguration.TargetUnit">
-                <mat-radio-button class="radio-button" [value]=0>Default (Depends on Revit's current units)</mat-radio-button>
+                <mat-radio-button class="radio-button" [value]=0>Default (Depends on Revit's current units)
+                </mat-radio-button>
                 <mat-radio-button class="radio-button" [value]=1>Inch</mat-radio-button>
                 <mat-radio-button class="radio-button" [value]=2>Foot</mat-radio-button>
                 <mat-radio-button class="radio-button" [value]=3>Millimeter</mat-radio-button>

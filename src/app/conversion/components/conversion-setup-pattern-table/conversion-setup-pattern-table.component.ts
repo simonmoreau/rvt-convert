@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,14 +9,15 @@ import AcadIsoPatFile from '../../../../assets/files/acadiso-pat.json';
   templateUrl: './conversion-setup-pattern-table.component.html',
   styleUrls: ['./conversion-setup-pattern-table.component.scss']
 })
-export class ConversionSetupPatternTableComponent implements OnInit, AfterViewInit{
+export class ConversionSetupPatternTableComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() public patternTable: FillPattern[];
+  @Input() public showModel: boolean;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  
+
   displayedColumns: string[] = ['name', 'target', 'acad'];
   acadPatterns: AcadIsoPat[];
 
@@ -24,36 +25,45 @@ export class ConversionSetupPatternTableComponent implements OnInit, AfterViewIn
 
   constructor() {
 
-   }
+  }
 
   ngOnInit(): void {
-    this.acadPatterns = AcadIsoPatFile.slice(0,10);
-    this.dataSource.data = this.patternTable;
+    this.acadPatterns = AcadIsoPatFile.slice(0, 10);
+    this.filterPattern(this.showModel);
     this.dataSource.paginator = this.paginator;
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.filterPattern(changes.showModel.currentValue);
+  }
+
+  filterPattern(showModel: boolean) {
+    if (showModel) {
+      this.dataSource.data = this.patternTable.filter(f => f.Target == 'Model');
+    }
+    else {
+      this.dataSource.data = this.patternTable.filter(f => f.Target == 'Drafting');
+    }
+  }
+
+
   ngAfterViewInit() {
 
-    
-  
-    /* now it's okay to set large data source... */
-    
-    
   }
 
 }
 
-export class FillPattern{
+export class FillPattern {
 
-  public constructor(init?:Partial<FillPattern>) {
+  public constructor(init?: Partial<FillPattern>) {
     Object.assign(this, init);
-}
+  }
 
-  Name:string;
-  Target:string;
-  DWG:string;
+  Name: string;
+  Target: string;
+  DWG: string;
 }
 
 export interface AcadIsoPat {
-  name:string;
+  name: string;
 }

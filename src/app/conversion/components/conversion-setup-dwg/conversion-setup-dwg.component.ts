@@ -21,6 +21,7 @@ export class ConversionSetupDwgComponent implements OnInit {
   
   panelOpenState = false;
   export: boolean = true;
+  showModel: boolean = false;
   dwgExportConfiguration: ACADExportOptions;
 
   textTreatmentAttributes: TextTreatmentAttribute[] = TextTreatmentAttribute.TextTreatmentAttributes;
@@ -34,7 +35,6 @@ export class ConversionSetupDwgComponent implements OnInit {
   public touchUi = false;
   colorCtr: AbstractControl = new FormControl(null);
   colorPickerBackground: Color = new Color(230, 230, 230);
-
   
   constructor() {
     this.dwgExportConfiguration = new ACADExportOptions();
