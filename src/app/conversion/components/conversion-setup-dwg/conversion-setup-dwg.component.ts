@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ExportColorMode, PropOverrideMode } from '../../classes/base-export-options.class';
-import { ACADExportOptions, Color, ExportUnit, LineScaling, SolidGeometry, TextTreatment } from '../../classes/dwg-export-options.class';
+import { ACADExportOptions, Color as AcadColor, ExportUnit, LineScaling, SolidGeometry, TextTreatment } from '../../classes/dwg-export-options.class';
 import { ExportLayerInfo, ExportLayerKey, ExportLayerTable } from '../../classes/export-layer-table.class';
 import LayerTable from '../../../../assets/files/layerTable.json'
 import PatternTable from '../../../../assets/files/fillPatternTable.json'
 import { FillPattern } from '../conversion-setup-pattern-table/conversion-setup-pattern-table.component';
+import { AbstractControl, FormControl } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
+import { Color, NgxMatColorPickerComponent } from '@angular-material-components/color-picker';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-conversion-setup-dwg',
@@ -13,6 +17,8 @@ import { FillPattern } from '../conversion-setup-pattern-table/conversion-setup-
 })
 export class ConversionSetupDwgComponent implements OnInit {
 
+  @ViewChild('picker', {static: true}) colorPicker: NgxMatColorPickerComponent;
+  
   panelOpenState = false;
   export: boolean = true;
   dwgExportConfiguration: ACADExportOptions;
@@ -23,6 +29,12 @@ export class ConversionSetupDwgComponent implements OnInit {
 
   exportLayerTable: ExportLayerTable = new ExportLayerTable();
   patternTable: FillPattern[] = [];
+
+  public color: ThemePalette = 'primary';
+  public touchUi = false;
+  colorCtr: AbstractControl = new FormControl(null);
+  colorPickerBackground: Color = new Color(230, 230, 230);
+
   
   constructor() {
     this.dwgExportConfiguration = new ACADExportOptions();
@@ -35,10 +47,28 @@ export class ConversionSetupDwgComponent implements OnInit {
     PatternTable.forEach(patternTableElement => {
       this.patternTable.push( new FillPattern({Name:patternTableElement.Name, Target:patternTableElement.Target, DWG:""}),)
     });
+
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
+    this.colorPicker._selected = new Color(255, 255, 255);
+    this.colorPicker._selectedChanged.pipe(
+      tap( color => this.dwgExportConfiguration.HatchBackgroundColor = new AcadColor(color.r,color.g,color.b)),
+      tap( color => this.CheckColorPickerBackground(color))
+    ).subscribe(_ => console.log(_));
+  }
+
+
+  CheckColorPickerBackground(color: Color) {
+    if (color.rgba =='rgba(255,255,255,1)')
+    {
+      this.colorPickerBackground = new Color(230, 230, 230);
+    }
+    else
+    {
+      this.colorPickerBackground = null;
+    }
   }
 
 }

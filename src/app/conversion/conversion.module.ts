@@ -9,7 +9,7 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreModule } from '../core/core.module';
 import { ConversionSetupComponent } from './components/conversion-setup/conversion-setup.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConversionSetupDwgComponent } from './components/conversion-setup-dwg/conversion-setup-dwg.component';
 import { ConversionSetupIfcComponent } from './components/conversion-setup-ifc/conversion-setup-ifc.component';
 import { ConversionViewListComponent } from './components/conversion-view-list/conversion-view-list.component';
@@ -17,6 +17,8 @@ import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { ConversionSetupLayerTableComponent } from './components/conversion-setup-layer-table/conversion-setup-layer-table.component';
 import { ConversionSetupPdfComponent } from './components/conversion-setup-pdf/conversion-setup-pdf.component';
 import { ConversionSetupPatternTableComponent } from './components/conversion-setup-pattern-table/conversion-setup-pattern-table.component';
+import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
+
 
 @NgModule({
   declarations: [
@@ -34,15 +36,20 @@ import { ConversionSetupPatternTableComponent } from './components/conversion-se
     ConversionSetupPdfComponent,
     ConversionSetupPatternTableComponent
   ],
+  providers: [
+    { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
+   ],
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMatColorPickerModule
   ],
   exports:[
-    UploaderComponent
+    UploaderComponent,
   ]
 })
 export class ConversionModule { }

@@ -30,6 +30,16 @@
     <mat-tab label="Patterns" class="configuration-tab">
         <div fxLayout="column" class="configuration-tab">
             <app-conversion-setup-pattern-table [patternTable]=patternTable></app-conversion-setup-pattern-table>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                <div>
+                    <mat-checkbox class="checkbox" [(ngModel)]="dwgExportConfiguration.UseHatchBackgroundColor">Add solid background</mat-checkbox>
+                </div>
+                <mat-form-field [ngClass]="{'disabled': !dwgExportConfiguration.UseHatchBackgroundColor}" style="width: 100px;">
+                    <input matInput [ngxMatColorPicker]="picker" [formControl]="colorCtr" >
+                    <ngx-mat-color-toggle matSuffix [for]="picker" [style.background-color]="colorPickerBackground" class="color-picker"></ngx-mat-color-toggle>
+                    <ngx-mat-color-picker #picker [touchUi]="touchUi" [color]="color"></ngx-mat-color-picker>
+                </mat-form-field>
+            </div>
         </div>
     </mat-tab>
     <mat-tab label="Text & Fonts" class="configuration-tab">

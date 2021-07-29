@@ -17,7 +17,8 @@
         <ng-container matColumnDef="acad">
             <th mat-header-cell *matHeaderCellDef> DWG Pattern </th>
             <td mat-cell *matCellDef="let fillPattern">
-                <mat-form-field class="view-type-select">
+                Automatically generate hatch pattern
+                <!-- <mat-form-field class="view-type-select">
                     <mat-label>Text behavior when exported:</mat-label>
                     <mat-select [(ngModel)]="fillPattern.DWG">
                         <mat-option *ngFor="let acadPattern of acadPatterns"
@@ -25,7 +26,7 @@
                             {{acadPattern.name}}
                         </mat-option>
                     </mat-select>
-                </mat-form-field>
+                </mat-form-field> -->
             </td>
         </ng-container>
 
