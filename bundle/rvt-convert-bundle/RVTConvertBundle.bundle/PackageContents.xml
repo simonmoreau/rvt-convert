@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationPackage>
+  <Components Description="Export Revit file">
+    <RuntimeRequirements OS="Win64"
+                         Platform="Revit"
+                         SeriesMin="R2018"
+                         SeriesMax="R2021" />
+    <ComponentEntry AppName="RVTConvertBundle"
+                    Version="1.0.0"
+                    ModuleName="./Contents/RVTConvertBundleApp.addin"
+                    AppDescription="Export RVT files"
+                    LoadOnCommandInvocation="False"
+                    LoadOnRevitStartup="True" />
+  </Components>
+</ApplicationPackage>
